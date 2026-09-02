@@ -1,10 +1,10 @@
 import Button from "../common/Button";
 import heroProfile from "../../assets/images/hero-profile.png";
 import githubIcon from "../../assets/icons/github-hero.svg";
-import mountainMask from "../../assets/images/hero-mountain-mask.svg";
 
 export default function Hero() {
   return (
+    <>
     <section id="hero" className="hero-section relative z-10 overflow-hidden bg-cream pt-24 sm:pt-28 md:pt-32">
       {/* Mobile/tablet (<1024px): fluid flow layout */}
       <div className="mx-auto grid w-full max-w-[1920px] gap-8 px-6 pb-10 sm:px-10 md:grid-cols-2 md:items-start md:gap-6 md:px-12 md:pb-0 lg:hidden">
@@ -45,44 +45,43 @@ export default function Hero() {
         </p>
       </div>
 
-      <a
-        href="#"
-        className="absolute hidden items-center justify-center gap-2 rounded-full border-2 border-white bg-ink text-[22px] font-semibold text-white lg:flex"
-        style={{ left: 461, top: 651, width: 220, height: 70 }}
-      >
+      <a href="#" className="hero-btn btn-resume hidden lg:flex">
         📄 이력서 보기
       </a>
-      <a
-        href="https://github.com"
-        className="absolute hidden items-center justify-center gap-3 rounded-full border-2 border-black text-[22px] font-semibold text-ink lg:flex"
-        style={{ left: 731, top: 651, width: 220, height: 70 }}
-      >
+      <a href="https://github.com" className="hero-btn btn-github hidden lg:flex">
         <img src={githubIcon} alt="" className="size-9" />
         깃허브
       </a>
 
-      <div
-        aria-hidden="true"
-        className="absolute hidden bg-charcoal lg:block"
-        style={{
-          left: 888,
-          top: 740,
-          width: 1000,
-          height: 150,
-          WebkitMaskImage: `url(${mountainMask})`,
-          maskImage: `url(${mountainMask})`,
-          WebkitMaskSize: "100% 100%",
-          maskSize: "100% 100%",
-          WebkitMaskRepeat: "no-repeat",
-          maskRepeat: "no-repeat",
-        }}
-      />
-      <img
-        src={heroProfile}
-        alt="고윤재 프로필 사진"
-        className="absolute hidden object-cover lg:block"
-        style={{ left: 883, top: 151, width: 947, height: 1140 }}
-      />
+      <div className="person-wrap hidden lg:block">
+        <img src={heroProfile} alt="고윤재 프로필 사진" />
+      </div>
     </section>
+
+    {/* 검정산 — 히어로 섹션 아래에 배치 */}
+    <div
+      className="hidden lg:block"
+      style={{ position: "relative", width: 1000, height: 150, marginLeft: 888, marginTop: -210 }}
+    >
+      <svg width="1000" height="150" viewBox="0 0 1000 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="mountain-mask" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="150">
+          <g clipPath="url(#mountain-clip)">
+            <path
+              d="M246.871 63.9149C313.222 63.9149 330.564 103.46 412.189 103.113C491.814 102.775 557.487 15.2986 611.899 15.2986C722.091 15.2986 772.906 150.294 869.429 150.436C196.391 150.217 0 150.217 0 150.447C155.303 150.447 161.148 63.9149 246.871 63.9149Z"
+              fill="#141017"
+            />
+          </g>
+        </mask>
+        <g mask="url(#mountain-mask)">
+          <rect width="1000" height="150" fill="#2C2C2C" />
+        </g>
+        <defs>
+          <clipPath id="mountain-clip">
+            <rect width="869.816" height="134.701" fill="white" transform="translate(0 15.2986)" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+    </>
   );
 }
