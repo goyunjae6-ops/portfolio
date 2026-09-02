@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
+
+@theme {
+  /* Colors — extracted from the Figma node (not the unrelated Design System page) */
+  --color-ink: #140f17;
+  --color-cream: #eeede9;
+  --color-charcoal: #2c2c2c;
+  --color-mist: #e9e9e7;
+  --color-pill: #edede8;
+  --color-gold: #c9a96e;
+  --color-ivory: #e8e4de;
+  --color-muted: #999999;
+  --color-label: #6b7280;
+  --color-body-grey: #374151;
+  --color-tag: #f0eeeb;
+  --color-divider: #e5e7eb;
+  --color-card-from: #e8e4df;
+  --color-card-via: #f5f3f0;
+
+  /* Radius */
+  --radius-section: 60px;
+  --radius-card: 24px;
+  --radius-info: 16px;
+  --radius-btn: 50px;
+
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background-color: var(--color-cream);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.review-swiper .swiper-pagination-bullet {
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-ink);
+  opacity: 0.2;
+  transition: width 0.2s ease;
+}
+
+.review-swiper .swiper-pagination-bullet-active {
+  width: 20px;
+  height: 4px;
+  border-radius: 6px;
+  opacity: 1;
+}
