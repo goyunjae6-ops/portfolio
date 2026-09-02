@@ -78,7 +78,7 @@ html {
     position: relative;
     width: 1920px;
     height: 950px;
-    background: linear-gradient(to bottom, #eeede9 0%, #eeede9 92%, #2c2c2c 100%);
+    background-color: #eeede9;
     overflow: hidden;
   }
 
