@@ -4,7 +4,8 @@ import githubIcon from "../../assets/icons/github-hero.svg";
 
 export default function Hero() {
   return (
-    <>
+    <div className="hero-outer">
+    <div className="hero-canvas">
     <section id="hero" className="hero-section relative z-10 overflow-hidden bg-cream pt-24 sm:pt-28 md:pt-32">
       {/* Mobile/tablet (<1024px): fluid flow layout */}
       <div className="mx-auto grid w-full max-w-[1920px] gap-8 px-6 pb-10 sm:px-10 md:grid-cols-2 md:items-start md:gap-6 md:px-12 md:pb-0 lg:hidden">
@@ -82,6 +83,7 @@ export default function Hero() {
         </defs>
       </svg>
     </div>
-    </>
+    </div>
+    </div>
   );
 }

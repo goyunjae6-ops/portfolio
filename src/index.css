@@ -53,8 +53,24 @@ html {
   opacity: 1;
 }
 
-/* Hero — exact desktop values, non-responsive fixed canvas at lg+ */
+/* Hero — exact 1920x950 canvas values, scaled responsively to fit the viewport at lg+ */
 @media (min-width: 1024px) {
+  .hero-outer {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    aspect-ratio: 1920 / 950;
+    margin: 0 auto;
+    overflow: hidden;
+    container-type: inline-size;
+  }
+
+  .hero-canvas {
+    width: 1920px;
+    transform-origin: top left;
+    transform: scale(calc(100cqw / 1920px));
+  }
+
   .hero-section {
     position: relative;
     width: 1920px;
