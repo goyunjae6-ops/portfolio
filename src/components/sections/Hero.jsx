@@ -54,8 +54,16 @@ export default function Hero() {
         깃허브
       </a>
 
-      <div className="person-wrap hidden lg:block">
-        <img src={heroProfile} alt="고윤재 프로필 사진" />
+      {/* 인물 이미지 — 자체적으로 잘림 처리 */}
+      <div
+        className="hidden lg:block"
+        style={{ position: "absolute", left: 883, top: 151, width: 947, height: 799, overflow: "hidden" }}
+      >
+        <img
+          src={heroProfile}
+          alt="고윤재"
+          style={{ width: "100%", height: 1140, objectFit: "cover", objectPosition: "top center" }}
+        />
       </div>
     </section>
 
