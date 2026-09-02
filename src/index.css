@@ -52,3 +52,55 @@ html {
   border-radius: 6px;
   opacity: 1;
 }
+
+/* Hero — exact desktop values, non-responsive fixed canvas at lg+ */
+@media (min-width: 1024px) {
+  .hero-section {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    height: 950px;
+    background-color: #eeede9;
+    overflow: hidden;
+  }
+
+  .hero-text {
+    position: absolute;
+    left: 293px;
+    top: 204px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    font-family: "Pretendard Variable", Pretendard, sans-serif;
+  }
+
+  .semibold-90 {
+    font-size: 90px;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .bold-110 {
+    font-size: 110px;
+    font-weight: 700;
+    color: #000000;
+  }
+
+  .line2 {
+    font-size: 80px;
+    font-weight: 500;
+    color: #999999;
+  }
+
+  .name {
+    font-size: 90px;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .suffix {
+    font-size: 80px;
+    font-weight: 500;
+    color: #999999;
+  }
+}
