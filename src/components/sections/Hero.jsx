@@ -59,10 +59,10 @@ export default function Hero() {
       </div>
     </section>
 
-    {/* 검정산 — 히어로 섹션 아래에 배치 */}
+    {/* 검정산 — 히어로 섹션 아래에 배치, 인물 이미지보다 앞으로 */}
     <div
       className="hidden lg:block"
-      style={{ position: "relative", width: 1000, height: 150, marginLeft: 888, marginTop: -210 }}
+      style={{ position: "relative", width: 1000, height: 150, marginLeft: 888, marginTop: -210, zIndex: 20 }}
     >
       <svg width="1000" height="150" viewBox="0 0 1000 150" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask id="mountain-mask" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="150">
