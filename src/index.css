@@ -63,6 +63,9 @@ html {
     margin: 0 auto;
     overflow: hidden;
     container-type: inline-size;
+    /* Matches the About section below so the sub-pixel scale-rounding
+       gap at the bottom edge shows this color instead of the cream body bg */
+    background-color: #2c2c2c;
   }
 
   .hero-canvas {
