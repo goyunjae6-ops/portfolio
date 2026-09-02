@@ -4,16 +4,16 @@ import githubIcon from "../../assets/icons/github-hero.svg";
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative overflow-hidden bg-cream pt-24 sm:pt-28 md:pt-32">
+    <section id="hero" className="relative overflow-hidden bg-cream pt-24 sm:pt-28 md:pt-32 lg:min-h-[920px] lg:pt-[190px]">
       <div className="mx-auto grid w-full max-w-[1920px] gap-8 px-6 pb-10 sm:px-10 md:grid-cols-2 md:items-start md:gap-6 md:px-12 md:pb-0 xl:px-24 2xl:px-[293px]">
-        <div className="order-2 flex flex-col items-center pt-2 text-center md:order-1 md:items-start md:pt-[8%] md:text-left">
-          <h1 className="whitespace-nowrap font-semibold text-ink leading-[1.3] text-[clamp(1.75rem,4.5vw,5.625rem)]">
+        <div className="order-2 flex flex-col items-center pt-2 text-center md:order-1 md:items-start md:pt-[8%] md:text-left lg:pt-0">
+          <h1 className="whitespace-nowrap font-semibold text-ink leading-[1.3] text-[clamp(1.75rem,4.5vw,5.625rem)] lg:text-[90px]">
             NO STOP, JUST <span className="font-bold">GO!</span>
           </h1>
-          <p className="font-medium text-muted leading-[1.3] text-[clamp(1.5rem,4vw,5rem)]">
+          <p className="font-medium text-muted leading-[1.3] text-[clamp(1.5rem,4vw,5rem)] lg:text-[80px]">
             결과로 증명하는
           </p>
-          <p className="leading-[1.3] text-[clamp(1.5rem,4vw,5rem)]">
+          <p className="leading-[1.3] text-[clamp(1.5rem,4vw,5rem)] lg:text-[80px]">
             <span className="font-semibold text-ink">고윤재</span> <span className="font-medium text-muted">입니다.</span>
           </p>
 
