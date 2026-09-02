@@ -114,6 +114,10 @@ html {
     font-size: 90px;
     font-weight: 600;
     color: #000000;
+    text-decoration-line: underline;
+    text-decoration-color: #c9a96e;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 10px;
   }
 
   .suffix {
