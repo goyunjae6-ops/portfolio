@@ -15,7 +15,7 @@ export default function Hero() {
           </h1>
           <p className="font-medium text-muted leading-[1.3] text-[clamp(1.5rem,4vw,5rem)]">결과로 증명하는</p>
           <p className="leading-[1.3] text-[clamp(1.5rem,4vw,5rem)]">
-            <span className="font-semibold text-ink underline decoration-[#c9a96e] decoration-4 underline-offset-8">고윤재</span>{" "}
+            <span className="font-semibold text-ink underline decoration-[rgba(201,169,110,0.55)] decoration-[7px] underline-offset-8">고윤재</span>{" "}
             <span className="font-medium text-muted">입니다.</span>
           </p>
 

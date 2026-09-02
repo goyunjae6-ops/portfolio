@@ -115,8 +115,8 @@ html {
     font-weight: 600;
     color: #000000;
     text-decoration-line: underline;
-    text-decoration-color: #c9a96e;
-    text-decoration-thickness: 4px;
+    text-decoration-color: rgba(201, 169, 110, 0.55);
+    text-decoration-thickness: 7px;
     text-underline-offset: 10px;
   }
 
