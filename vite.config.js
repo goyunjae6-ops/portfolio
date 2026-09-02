@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/portfolio/',
+  // GitHub Pages serves this at /portfolio/, Vercel serves it at the domain root.
+  base: process.env.VERCEL ? '/' : '/portfolio/',
   plugins: [react(), tailwindcss()],
 })
