@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>고윤재 이력서</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --line: #e3e3e3;
+    --muted: #8a8a8a;
+    --accent: #444444;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #ffffff;
+    color: var(--ink);
+    font-family: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 56px 40px 80px;
+  }
+  header.hero {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    padding-bottom: 36px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 36px;
+  }
+  .photo {
+    width: 140px;
+    height: 175px;
+    flex: none;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+  }
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  header.hero h1 {
+    margin: 0 0 6px;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  header.hero h1 .en {
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 18px;
+    margin-left: 6px;
+  }
+  header.hero .tagline {
+    margin: 0 0 18px;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .roles span {
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 5px 13px;
+    border-radius: 999px;
+  }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  section {
+    margin-bottom: 32px;
+  }
+  section h2 {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--ink);
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .card-head h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .card-meta {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0;
+  }
+  .stack span {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    background: #f4f4f4;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .card p {
+    font-size: 13.5px;
+    color: #333;
+    margin: 6px 0;
+  }
+  .plain-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+    color: #333;
+  }
+  .print-btn {
+    display: inline-block;
+    margin-bottom: 24px;
+    padding: 10px 22px;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+  @media print {
+    .print-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <button class="print-btn" onclick="window.print()">🖨 PDF로 저장 / 인쇄</button>
+
+    <header class="hero">
+      <div class="photo">
+        <img src="about-photo.png" alt="고윤재 프로필 사진" />
+      </div>
+      <div>
+        <h1>고윤재<span class="en">Ko Yoon Jae</span></h1>
+        <p class="tagline">망설임 없이 'JUST GO', 모든 과정을 결과로 증명합니다.</p>
+        <div class="roles">
+          <span>Frontend Developer</span>
+          <span>Web Designer</span>
+          <span>AI Video Creator</span>
+          <span>Motion Editor</span>
+        </div>
+        <div class="contact">
+          <span>2004.02.17</span>
+          <span>서울특별시 관악구 대학동</span>
+          <span>010-5350-4654</span>
+          <span>goyunjae6@gmail.com</span>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2>Education</h2>
+      <div class="plain-list">
+        <p>MBC 아카데미 · 생성형 AI를 활용한 반응형 웹콘텐츠 개발기획자 양성과정 (26.04 - 26.10)</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Certificate</h2>
+      <div class="plain-list">
+        <p>1종보통 운전면허 (2024)</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>01. 이케아 리디자인 웹사이트</h3>
+          <span class="card-meta">3주 · 기여도 70%</span>
+        </div>
+        <div class="stack">
+          <span>Figma</span><span>React 19</span><span>Next.js</span><span>TypeScript</span><span>Three.js</span><span>Tailwind CSS</span><span>Supabase</span>
+        </div>
+        <p>이케아 공식 웹사이트의 UX/UI를 분석하고 사용자 중심으로 리디자인. 3D 가구 미리보기와 공간 배치 시뮬레이션 기능을 추가하여 온라인 가구 쇼핑 경험을 혁신했습니다.</p>
+        <p>직관적인 필터링 시스템과 Three.js 기반 3D 뷰어를 도입해 사용자가 실제 공간에 가구를 배치해볼 수 있게 했고, 페이지 로딩 속도를 35% 개선했습니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>02. AI 영상 제작 프로젝트</h3>
+          <span class="card-meta">2주 · 기여도 65%</span>
+        </div>
+        <div class="stack">
+          <span>Python</span><span>Premiere Pro</span><span>After Effects</span><span>Stable Diffusion</span><span>RunwayML</span><span>FFmpeg</span>
+        </div>
+        <p>AI 기반 영상 자동 생성 및 편집 파이프라인 구축. Stable Diffusion으로 이미지를 생성하고 RunwayML로 영상 변환 후 자동 편집하여 콘텐츠 제작 시간을 80% 단축했습니다.</p>
+        <p>AI 이미지 생성과 자동 컷 편집을 도입하고, FFmpeg 기반 배치 처리로 렌더링 속도를 60% 개선했습니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>03. 영상 제작 팀 프로젝트</h3>
+          <span class="card-meta">4주 · 기여도 50%</span>
+        </div>
+        <div class="stack">
+          <span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><span>Blender</span><span>Cinema 4D</span>
+        </div>
+        <p>대학 영상 동아리 팀 프로젝트로, 브랜드 홍보 영상을 기획부터 후반 작업까지 전 과정 담당. 모션 그래픽과 컬러 그레이딩을 활용해 시각적 완성도를 높였습니다.</p>
+        <p>클라우드 기반 협업 시스템과 프록시 편집 워크플로우를 도입해 저사양 환경에서도 원활한 편집이 가능하게 했고, 최종 렌더링 시간을 45% 단축했습니다.</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

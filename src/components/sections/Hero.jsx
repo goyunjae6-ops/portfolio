@@ -26,7 +26,7 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-5 md:justify-start">
-            <Button as="a" href="#" variant="dark" size="lg">
+            <Button as="a" href="resume.html" target="_blank" rel="noopener noreferrer" variant="dark" size="lg">
               📄 이력서 보기
             </Button>
             <Button as="a" href="https://github.com" variant="outline" size="lg" icon={githubIcon} iconAlt="GitHub">
@@ -59,7 +59,7 @@ export default function Hero() {
         </p>
       </div>
 
-      <a href="#" className="hero-btn btn-resume hidden lg:flex">
+      <a href="resume.html" target="_blank" rel="noopener noreferrer" className="hero-btn btn-resume hidden lg:flex">
         📄 이력서 보기
       </a>
       <a href="https://github.com" className="hero-btn btn-github hidden lg:flex">

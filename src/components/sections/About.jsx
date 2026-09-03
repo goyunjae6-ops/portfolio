@@ -51,14 +51,14 @@ export default function About() {
         </div>
       </div>
 
-      <div className="relative top-[160px] mx-auto mb-[200px] mt-10 grid max-w-[1350px] grid-cols-1 gap-10 lg:grid-cols-[460px_1fr] lg:gap-10">
-        <div className="mx-auto aspect-[460/575] w-full max-w-[460px] overflow-hidden rounded-[32px] bg-ink">
+      <div className="relative top-[160px] mx-auto mb-[220px] mt-10 grid max-w-[1350px] grid-cols-1 gap-10 lg:grid-cols-[460px_1fr] lg:gap-10">
+        <div className="relative top-[30px] mx-auto aspect-[460/575] w-full max-w-[460px] overflow-hidden rounded-[32px] bg-ink">
           <img src={aboutPhoto} alt="고윤재 소개 사진" loading="lazy" decoding="async" className="h-full w-full object-cover" />
         </div>
 
         <div className="flex flex-col gap-6">
-          <h2 className="text-[32px] font-bold leading-[1.2] text-white sm:text-[50px]">{about.name}</h2>
-          <p className="text-[20px] font-semibold leading-[1.6] text-muted sm:text-[30px]">
+          <h2 className="relative top-[30px] text-[32px] font-bold leading-[1.2] text-white sm:text-[50px]">{about.name}</h2>
+          <p className="relative top-[30px] text-[20px] font-semibold leading-[1.6] text-muted sm:text-[30px]">
             {about.tagline.split(/(GO)/).map((part, i) =>
               part === "GO" ? (
                 <span key={i} className="text-[25px] sm:text-[35px]">
@@ -70,7 +70,7 @@ export default function About() {
             )}
           </p>
 
-          <div className="flex flex-1 flex-col justify-between gap-5 rounded-2xl border border-white/20 px-7 py-6">
+          <div className="relative top-[30px] flex flex-1 flex-col justify-between gap-5 rounded-2xl border border-white/20 px-7 py-6">
             <div className="flex flex-col gap-1.5">
               <p className="text-[11px] font-bold tracking-[2px] text-gold">BIRTH</p>
               <div className="text-sm leading-6 text-ivory">
