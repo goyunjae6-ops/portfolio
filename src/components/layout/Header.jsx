@@ -22,7 +22,7 @@ export default function Header() {
           yoonjae
         </a>
 
-        <nav className="hidden items-center gap-4 md:flex lg:gap-8">
+        <nav className="hidden items-center gap-3.5 md:flex lg:gap-6">
           {navLinks.map((link) => (
             <a
               key={link.label}

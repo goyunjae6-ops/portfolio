@@ -3,7 +3,7 @@ import aboutPhoto from "../../assets/images/about-photo.png";
 
 export default function About() {
   return (
-    <section id="about" className="relative scroll-mt-24 rounded-t-[60px] bg-charcoal px-6 pb-16 pt-24 sm:px-10 lg:-mt-[2px] lg:px-[80px] lg:pt-[140px]">
+    <section id="about" className="relative scroll-mt-24 bg-charcoal px-6 pb-16 pt-24 sm:px-10 lg:-mt-[2px] lg:px-[80px] lg:pt-[140px]">
       <div className="mx-auto flex max-w-[1350px] justify-center lg:justify-end">
         <span className="inline-flex h-[70px] items-center justify-center rounded-full border-2 border-white px-9 text-xl font-bold text-white sm:h-[100px] sm:text-[35px]">
           ABOUT ME
