@@ -185,3 +185,28 @@ html {
     clip-path: none;
   }
 }
+
+/* About role rotator — words cross-fade with a soft blur, one at a time,
+   in an even round-robin (each word's negative delay offsets it into
+   its own slot of the shared cycle). */
+@keyframes role-cycle {
+  0% { opacity: 0; filter: blur(10px); }
+  6% { opacity: 1; filter: blur(0); }
+  19% { opacity: 1; filter: blur(0); }
+  25% { opacity: 0; filter: blur(10px); }
+  100% { opacity: 0; filter: blur(10px); }
+}
+
+.role-cycle-item {
+  animation: role-cycle 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .role-cycle-item {
+    animation: none;
+    opacity: 0;
+  }
+  .role-cycle-item:first-child {
+    opacity: 1;
+  }
+}
