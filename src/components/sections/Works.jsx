@@ -5,13 +5,13 @@ import showcaseHalftone from "../../assets/images/showcase-halftone.png";
 export default function Works() {
   return (
     <section id="works" className="relative scroll-mt-24 rounded-t-[60px] bg-cream px-4 pb-0 pt-10 sm:px-8 lg:px-0">
-      <div className="mx-auto flex max-w-[1920px] justify-center pb-8 lg:justify-start lg:pl-[220px]">
-        <span className="inline-flex items-center justify-center text-[40px] font-bold tracking-[0.2em] text-ink sm:text-[56px]">
+      <div className="mx-auto flex max-w-[1920px] justify-center pb-8">
+        <span className="inline-flex h-[70px] items-center justify-center rounded-full border-2 border-ink px-9 text-xl font-bold text-ink sm:h-[100px] sm:text-[35px]">
           WORKS
         </span>
       </div>
 
-      <div className="mx-auto flex max-w-[1920px] flex-col gap-6 px-2 sm:px-6 lg:px-10">
+      <div className="mx-auto flex max-w-[1350px] flex-col gap-20 px-2 pt-6 sm:gap-28 sm:px-6 lg:px-0">
         {works.map((work) => (
           <WorkCard key={work.number} work={work} />
         ))}

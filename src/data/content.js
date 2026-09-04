@@ -12,15 +12,18 @@ export const navLinks = [
 export const works = [
   {
     number: "01",
-    title: "이케아 리디자인 웹사이트",
-    period: "3주",
-    contribution: "70%",
-    stack: ["Figma", "React 19", "Next.js", "TypeScript", "Three.js", "Tailwind CSS", "Supabase"],
+    title: "IKEA 웹사이트 리디자인",
+    period: "4주",
+    contribution: "20%",
+    stack: ["Figma", "HTML5", "Tailwind CSS v4", "GSAP", "Swiper", "JavaScript"],
     overview:
-      "이케아 공식 웹사이트의 UX/UI를 분석하고 사용자 중심으로 리디자인한 프로젝트입니다. 가구 탐색부터 구매까지의 여정을 개선하고, 3D 가구 미리보기와 공간 배치 시뮬레이션 기능을 추가하여 온라인 가구 쇼핑 경험을 혁신했습니다.",
+      "ESG 경영으로 잘 알려진 이케아(IKEA) 공식 온라인몰을 모티브로, 5인 팀(Team_Synergos)이 UI/UX 구조와 장바구니·위시리스트 등 핵심 기능을 재현한 리디자인 프로젝트입니다. 벤치마킹 분석부터 페르소나 설계, 와이어프레임, 시안, 퍼블리싱까지 전 과정을 거쳐 25종의 페이지를 GitHub Pages로 배포했습니다.",
     problem:
-      "기존 이케아 웹사이트에서 카테고리 탐색이 복잡하고 가구의 실제 크기감을 파악하기 어려운 문제를 발견했습니다. 직관적인 필터링 시스템과 Three.js 기반 3D 뷰어를 도입하여 사용자가 실제 공간에 가구를 배치해볼 수 있게 했고, 페이지 로딩 속도를 35% 개선했습니다.",
+      "이케아 코리아를 심층 분석하고 한샘몰·오늘의집·MUJI를 벤치마킹해 개선 포인트를 도출했습니다. 3종의 페르소나와 사용자 여정지도를 설계해 리디자인 방향을 구체화하고, 이를 바탕으로 반응형(1280/1024/640) 와이어프레임을 제작해 실제 구현의 기준을 마련했습니다.",
     mockup: work1Mockup,
+    imageFit: "contain",
+    siteUrl: "https://heebon00.github.io/Team_Synergos_esg/",
+    githubUrl: "https://github.com/heebon00/Team_Synergos_esg",
   },
   {
     number: "02",
