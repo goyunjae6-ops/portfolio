@@ -18,7 +18,7 @@ export default function Header() {
           scrolled ? "shadow-[0px_4px_16px_0px_rgba(0,0,0,0.08)]" : "shadow-none"
         }`}
       >
-        <a href="#hero" className="text-xl font-bold text-ink sm:text-[28px]">
+        <a href="#hero" className="text-xl font-bold text-ink visited:text-ink sm:text-[28px]">
           yoonjae
         </a>
 
@@ -27,7 +27,7 @@ export default function Header() {
             <a
               key={link.label}
               href={link.href}
-              className="flex h-10 items-center justify-center rounded-full bg-pill px-5 text-base font-medium text-[#333] lg:px-7 lg:text-xl"
+              className="flex h-10 items-center justify-center rounded-full bg-pill px-5 text-base font-medium text-[#333] visited:text-[#333] lg:px-7 lg:text-xl"
             >
               {link.label}
             </a>
@@ -36,7 +36,7 @@ export default function Header() {
 
         <a
           href="#contact"
-          className="flex h-10 w-[110px] items-center justify-center rounded-full bg-ink text-sm font-semibold text-white sm:w-[140px] sm:text-base"
+          className="flex h-10 w-[110px] items-center justify-center rounded-full bg-ink text-sm font-semibold text-white visited:text-white sm:w-[140px] sm:text-base"
         >
           Let&apos;s Connect
         </a>

@@ -69,26 +69,41 @@ export const reviews = [
   },
 ];
 
-export const techStackGroups = [
+export const skillGroups = [
   {
-    title: "IKEA 웹사이트 리디자인",
+    title: "Frontend Developer",
+    description: "웹 UI를 구조화하고 반응형으로 구현합니다",
     items: [
-      { name: "Figma", url: "https://www.figma.com/" },
-      { name: "HTML5", url: "https://developer.mozilla.org/ko/docs/Web/HTML" },
-      { name: "Tailwind CSS v4", url: "https://tailwindcss.com/" },
-      { name: "GSAP", url: "https://gsap.com/" },
-      { name: "Swiper", url: "https://swiperjs.com/" },
-      { name: "JavaScript", url: "https://developer.mozilla.org/ko/docs/Web/JavaScript" },
+      { name: "HTML / CSS3", level: 90 },
+      { name: "JavaScript", level: 85 },
+      { name: "React", level: 80 },
+      { name: "Tailwind CSS v4", level: 85 },
     ],
   },
   {
-    title: "이 포트폴리오 홈페이지",
+    title: "Web Designer",
+    description: "구조를 설계하고 움직임을 더합니다",
     items: [
-      { name: "React", url: "https://react.dev/" },
-      { name: "Vite", url: "https://vite.dev/" },
-      { name: "Tailwind CSS v4", url: "https://tailwindcss.com/" },
-      { name: "GSAP", url: "https://gsap.com/" },
-      { name: "Swiper", url: "https://swiperjs.com/" },
+      { name: "Figma", level: 90 },
+      { name: "GSAP", level: 75 },
+      { name: "Photoshop", level: 70 },
+    ],
+  },
+  {
+    title: "AI Developer",
+    description: "AI 도구와 에이전트로 작업을 자동화합니다",
+    items: [
+      { name: "Claude", level: 90 },
+      { name: "Antigravity", level: 70 },
+      { name: "Python", level: 80 },
+    ],
+  },
+  {
+    title: "Motion Editor",
+    description: "촬영본을 다듬고 모션그래픽으로 완성합니다",
+    items: [
+      { name: "Premiere Pro", level: 90 },
+      { name: "After Effects", level: 85 },
     ],
   },
 ];
@@ -103,9 +118,13 @@ export const about = {
 };
 
 export const footer = {
-  name: "Andréw Kaplan",
-  role: "Digital designer + Crative Frontend Developer",
+  name: "고윤재 (Ko Yoon Jae)",
+  role: "Web Designer + Creative Frontend Developer",
   copyright: "ⓒ2026 고윤재. All rights reserved.",
-  email: "yoonjae.ko@gmail.com",
-  menu: ["LinkedIn", "Medium", "Instagram", "X", "Behance"],
+  email: "goyunjae6@gmail.com",
+  menu: [
+    { label: "LinkedIn", url: "#" },
+    { label: "Instagram", url: "#" },
+    { label: "GitHub", url: "#" },
+  ],
 };

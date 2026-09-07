@@ -2,9 +2,9 @@ export default function Button({ as: As = "a", variant = "solid", icon, iconAlt 
   const base = "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors";
 
   const variants = {
-    solid: "bg-ink text-white border-2 border-white hover:bg-black",
-    outline: "border-2 border-ink text-ink hover:bg-ink hover:text-white",
-    dark: "bg-ink text-white hover:bg-black",
+    solid: "bg-ink text-white visited:text-white border-2 border-white hover:bg-black",
+    outline: "border-2 border-ink text-ink visited:text-ink hover:bg-ink hover:text-white",
+    dark: "bg-ink text-white visited:text-white hover:bg-black",
   };
 
   const sizes = {

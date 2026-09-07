@@ -6,6 +6,9 @@ import { useEffect, useRef, useState } from "react";
  * (see `.mouse-dot` in index.css) makes it render as the visual opposite of
  * whatever is underneath, so it works over any background color for free.
  *
+ * Elements marked `.cursor-accent` (e.g. the Footer's "Let's Connect" link)
+ * swap the dot to a solid black fill instead of the difference-blend white.
+ *
  * The grown/shrunk state is driven by React state + inline style rather than
  * toggling a CSS class, because the class-toggle approach silently failed to
  * take effect here while a `transform` was being written to the same element
@@ -13,7 +16,7 @@ import { useEffect, useRef, useState } from "react";
  */
 export default function CursorDot() {
   const dotRef = useRef(null);
-  const [overLink, setOverLink] = useState(false);
+  const [variant, setVariant] = useState("none");
 
   useEffect(() => {
     const skip = window.matchMedia("(hover: none), (pointer: coarse), (prefers-reduced-motion: reduce)").matches;
@@ -33,7 +36,13 @@ export default function CursorDot() {
 
     const onMouseOver = (e) => {
       const target = e.target.closest("a, button");
-      setOverLink(!!target && !target.closest(".no-cursor-dot"));
+      if (!target || target.closest(".no-cursor-dot")) {
+        setVariant("none");
+      } else if (target.closest(".cursor-accent")) {
+        setVariant("accent");
+      } else {
+        setVariant("link");
+      }
     };
 
     const tick = () => {
@@ -54,12 +63,13 @@ export default function CursorDot() {
     };
   }, []);
 
-  return (
-    <span
-      ref={dotRef}
-      className="mouse-dot"
-      aria-hidden="true"
-      style={overLink ? { width: 60, height: 60, top: -30, left: -30, opacity: 1 } : undefined}
-    />
-  );
+  const grownStyle = { width: 60, height: 60, top: -30, left: -30, opacity: 1 };
+  const style =
+    variant === "accent"
+      ? { ...grownStyle, backgroundColor: "var(--color-ink)", mixBlendMode: "normal" }
+      : variant === "link"
+      ? grownStyle
+      : undefined;
+
+  return <span ref={dotRef} className="mouse-dot" aria-hidden="true" style={style} />;
 }
