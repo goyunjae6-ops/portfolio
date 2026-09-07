@@ -4,10 +4,12 @@ import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import Works from "./components/sections/Works";
 import Reviews from "./components/sections/Reviews";
+import CursorDot from "./components/common/CursorDot";
 
 function App() {
   return (
     <>
+      <CursorDot />
       <Header />
       <main>
         <Hero />

@@ -8,7 +8,7 @@ export default function Button({ as: As = "a", variant = "solid", icon, iconAlt 
   };
 
   const sizes = {
-    lg: "h-[70px] px-9 text-[22px]",
+    lg: "h-[60px] px-8 text-[18px]",
     md: "h-[52px] px-6 text-[16px]",
   };
 

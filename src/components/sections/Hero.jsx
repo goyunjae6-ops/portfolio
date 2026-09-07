@@ -26,11 +26,11 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-5 md:justify-start">
-            <Button as="a" href="resume.html" target="_blank" rel="noopener noreferrer" variant="dark" size="lg">
+            <Button as="a" href="resume.html" target="_blank" rel="noopener noreferrer" variant="dark" size="lg" className="no-cursor-dot btn-press">
               📄 이력서 보기
             </Button>
-            <Button as="a" href="https://github.com" variant="outline" size="lg" icon={githubIcon} iconAlt="GitHub">
-              깃허브
+            <Button as="a" href="https://github.com/goyunjae6-ops" target="_blank" rel="noopener noreferrer" variant="outline" size="lg" icon={githubIcon} iconAlt="GitHub" className="no-cursor-dot btn-press">
+              깃허브 보기
             </Button>
           </div>
         </div>
@@ -59,12 +59,12 @@ export default function Hero() {
         </p>
       </div>
 
-      <a href="resume.html" target="_blank" rel="noopener noreferrer" className="hero-btn btn-resume hidden lg:flex">
+      <a href="resume.html" target="_blank" rel="noopener noreferrer" className="hero-btn btn-resume no-cursor-dot btn-press hidden lg:flex">
         📄 이력서 보기
       </a>
-      <a href="https://github.com" className="hero-btn btn-github hidden lg:flex">
-        <img src={githubIcon} alt="" className="size-9" />
-        깃허브
+      <a href="https://github.com/goyunjae6-ops" target="_blank" rel="noopener noreferrer" className="hero-btn btn-github no-cursor-dot btn-press hidden lg:flex">
+        <img src={githubIcon} alt="" className="size-5" />
+        깃허브 보기
       </a>
 
       {/* 인물 이미지 — 자체적으로 잘림 처리 */}

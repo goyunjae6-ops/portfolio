@@ -37,6 +37,46 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Custom cursor dot — a small circle that follows the mouse with a slight
+   trailing ease, then grows over any link/button. `mix-blend-mode: difference`
+   against a white fill makes it render as the visual "opposite" of whatever
+   background sits under it, without needing per-element color variables. */
+.mouse-dot {
+  position: fixed;
+  top: -5px;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  transition: width 0.15s linear, height 0.15s linear, top 0.15s linear, left 0.15s linear, opacity 0.15s ease;
+}
+
+/* Subtle "pressed" feel on hover — used only on the resume/github buttons. */
+.btn-press {
+  transition: transform 0.15s ease;
+}
+
+.btn-press:hover {
+  transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-press {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .mouse-dot {
+    display: none;
+  }
+}
+
 .review-swiper .swiper-pagination-bullet {
   width: 4px;
   height: 4px;
@@ -128,29 +168,29 @@ html {
 
   .hero-btn {
     position: absolute;
-    top: 666px;
-    width: 220px;
-    height: 70px;
+    top: 651px;
+    width: 196px;
+    height: 60px;
     border-radius: 50px;
     font-family: "Pretendard Variable", Pretendard, sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    gap: 12px;
+    gap: 10px;
   }
 
   .btn-resume {
-    left: 461px;
+    left: 472px;
     background-color: #140f17;
     color: #ffffff;
     border: 2px solid #ffffff;
   }
 
   .btn-github {
-    left: 731px;
+    left: 718px;
     background-color: transparent;
     color: #140f17;
     border: 2px solid #000000;
