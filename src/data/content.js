@@ -69,6 +69,30 @@ export const reviews = [
   },
 ];
 
+export const techStackGroups = [
+  {
+    title: "IKEA 웹사이트 리디자인",
+    items: [
+      { name: "Figma", url: "https://www.figma.com/" },
+      { name: "HTML5", url: "https://developer.mozilla.org/ko/docs/Web/HTML" },
+      { name: "Tailwind CSS v4", url: "https://tailwindcss.com/" },
+      { name: "GSAP", url: "https://gsap.com/" },
+      { name: "Swiper", url: "https://swiperjs.com/" },
+      { name: "JavaScript", url: "https://developer.mozilla.org/ko/docs/Web/JavaScript" },
+    ],
+  },
+  {
+    title: "이 포트폴리오 홈페이지",
+    items: [
+      { name: "React", url: "https://react.dev/" },
+      { name: "Vite", url: "https://vite.dev/" },
+      { name: "Tailwind CSS v4", url: "https://tailwindcss.com/" },
+      { name: "GSAP", url: "https://gsap.com/" },
+      { name: "Swiper", url: "https://swiperjs.com/" },
+    ],
+  },
+];
+
 export const about = {
   name: "고윤재 , Ko Yoon Jae",
   tagline: "망설임 없이 'JUST GO', 모든 과정을 결과로 증명합니다.",

@@ -1,5 +1,5 @@
-import { works } from "../../data/content";
-import WorkCard from "./WorkCard";
+import { works, techStackGroups } from "../../data/content";
+import WorkCard, { STICKY_OFFSET } from "./WorkCard";
 import showcaseHalftone from "../../assets/images/showcase-halftone.png";
 
 export default function Works() {
@@ -11,14 +11,40 @@ export default function Works() {
         </span>
       </div>
 
-      <div className="mx-auto flex max-w-[1350px] flex-col gap-20 px-2 pt-6 sm:gap-28 sm:px-6 lg:px-0">
-        {works.map((work) => (
-          <WorkCard key={work.number} work={work} />
+      <div className="mx-auto flex max-w-[1350px] flex-col px-2 pt-6 sm:px-6 lg:px-0">
+        {works.map((work, i) => (
+          <div key={work.number} className="sticky pb-24 sm:pb-32 lg:pb-40" style={{ top: STICKY_OFFSET, zIndex: i + 1 }}>
+            <WorkCard work={work} />
+          </div>
         ))}
       </div>
 
-      {/* Awards Section — decorative transition band (empty in source design) */}
-      <div className="mt-6 h-24 rounded-t-[60px] bg-mist sm:h-32" />
+      {/* Tech Stack Section */}
+      <div className="mt-6 rounded-t-[60px] bg-white px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
+        <div className="mx-auto grid max-w-[1350px] grid-cols-1 gap-14 sm:grid-cols-2 sm:gap-20">
+          {techStackGroups.map((group) => (
+            <div key={group.title} className="flex flex-col gap-6">
+              <h2 className="text-2xl font-bold text-ink sm:text-[32px]">{group.title}</h2>
+              <div className="flex flex-col border-t border-divider">
+                {group.items.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between border-b border-divider py-4 text-lg font-medium text-ink transition-colors hover:text-gold sm:text-xl"
+                  >
+                    {item.name}
+                    <span className="text-base text-muted transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-gold">
+                      ↗
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Showcase Section */}
       <div className="flex justify-center rounded-t-[60px] bg-white px-6 py-20">

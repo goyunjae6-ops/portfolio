@@ -1,8 +1,53 @@
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { SplitText } from "gsap/SplitText";
 import Button from "../common/Button";
 import heroProfile from "../../assets/images/hero-profile.png";
 import githubIcon from "../../assets/icons/github-hero.svg";
 
+gsap.registerPlugin(SplitText);
+
 export default function Hero() {
+  const mLine1 = useRef(null);
+  const mLine2 = useRef(null);
+  const mLine3 = useRef(null);
+  const dLine1 = useRef(null);
+  const dLine2 = useRef(null);
+  const dLine3 = useRef(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const splits = [];
+    // Each line's words finish revealing (duration + internal word-stagger) before
+    // the next line starts, so the three lines read as a clear top-to-bottom sequence
+    // rather than all appearing at once. Loops after a pause holding the full text.
+    const lineGap = 1.1;
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 5 });
+
+    [
+      [mLine1, mLine2, mLine3],
+      [dLine1, dLine2, dLine3],
+    ].forEach((group) => {
+      group.forEach((ref, i) => {
+        const el = ref.current;
+        if (!el) return;
+        const split = new SplitText(el, { type: "words", mask: "words" });
+        splits.push(split);
+        tl.from(
+          split.words,
+          { yPercent: 110, opacity: 0, duration: 1, ease: "power4.out", stagger: 0.04 },
+          i * lineGap
+        );
+      });
+    });
+
+    return () => {
+      tl.kill();
+      splits.forEach((split) => split.revert());
+    };
+  }, []);
+
   return (
     <div className="hero-outer">
     <div className="hero-canvas">
@@ -10,19 +55,15 @@ export default function Hero() {
       {/* Mobile/tablet (<1024px): fluid flow layout */}
       <div className="mx-auto grid w-full max-w-[1920px] gap-8 px-6 pb-10 sm:px-10 md:grid-cols-2 md:items-start md:gap-6 md:px-12 md:pb-0 lg:hidden">
         <div className="order-2 flex flex-col items-center pt-2 text-center md:order-1 md:items-start md:pt-[8%]">
-          <h1 className="whitespace-nowrap font-semibold text-ink leading-[1.3] text-[clamp(1.75rem,4.5vw,5.625rem)]">
-            <span className="hero-anim hero-anim-1 inline-block">
-              NO STOP, JUST <span className="font-bold">GO!</span>
-            </span>
+          <h1 ref={mLine1} className="whitespace-nowrap font-semibold text-ink leading-[1.3] text-[clamp(1.75rem,4.5vw,5.625rem)]">
+            NO STOP, JUST <span className="font-bold">GO!</span>
           </h1>
-          <p className="font-medium text-muted leading-[1.3] text-[clamp(1.5rem,4vw,5rem)]">
-            <span className="hero-anim hero-anim-2 inline-block">결과로 증명하는</span>
+          <p ref={mLine2} className="font-medium text-muted leading-[1.3] text-[clamp(1.5rem,4vw,5rem)]">
+            결과로 증명하는
           </p>
-          <p className="leading-[1.3] text-[clamp(1.5rem,4vw,5rem)]">
-            <span className="hero-anim hero-anim-3 inline-block">
-              <span className="font-semibold text-ink underline decoration-[rgba(201,169,110,0.55)] decoration-[7px] underline-offset-8">고윤재</span>{" "}
-              <span className="font-medium text-muted">입니다.</span>
-            </span>
+          <p ref={mLine3} className="leading-[1.3] text-[clamp(1.5rem,4vw,5rem)]">
+            <span className="font-semibold text-ink underline decoration-[rgba(201,169,110,0.55)] decoration-[7px] underline-offset-8">고윤재</span>{" "}
+            <span className="font-medium text-muted">입니다.</span>
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-5 md:justify-start">
@@ -44,18 +85,12 @@ export default function Hero() {
 
       {/* Desktop (>=1024px): fixed 1920x950 canvas, exact Figma pixel positions */}
       <div className="hero-text hidden lg:block">
-        <p className="line1">
-          <span className="hero-anim hero-anim-1 inline-block">
-            <span className="semibold-90">NO STOP, JUST</span> <span className="bold-110">GO!</span>
-          </span>
+        <p ref={dLine1} className="line1">
+          <span className="semibold-90">NO STOP, JUST</span> <span className="bold-110">GO!</span>
         </p>
-        <p className="line2">
-          <span className="hero-anim hero-anim-2 inline-block">결과로 증명하는</span>
-        </p>
-        <p className="line3">
-          <span className="hero-anim hero-anim-3 inline-block">
-            <span className="name">고윤재</span> <span className="suffix">입니다.</span>
-          </span>
+        <p ref={dLine2} className="line2">결과로 증명하는</p>
+        <p ref={dLine3} className="line3">
+          <span className="name">고윤재</span> <span className="suffix">입니다.</span>
         </p>
       </div>
 

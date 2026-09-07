@@ -1,19 +1,68 @@
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Button from "../common/Button";
 import TechTag from "../common/TechTag";
 import arrowUpRight from "../../assets/icons/arrow-up-right.svg";
 import githubIcon from "../../assets/icons/github.svg";
 import fileTextIcon from "../../assets/icons/file-text.svg";
 
+gsap.registerPlugin(ScrollTrigger);
+
+// The sticky wrapper's `top` offset in Works.jsx — the number badge fades out
+// right as the card's bottom edge reaches that line, which is the exact
+// moment the next card takes over the pinned spot and covers this one.
+export const STICKY_OFFSET = 140;
+
 export default function WorkCard({ work }) {
+  const cardRef = useRef(null);
+  const imgRef = useRef(null);
+  const numberRef = useRef(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        imgRef.current,
+        { scale: 1 },
+        {
+          scale: 1.12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+
+      gsap.to(numberRef.current, {
+        opacity: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: `bottom ${STICKY_OFFSET + 60}`,
+          end: `bottom ${STICKY_OFFSET}`,
+          scrub: true,
+        },
+      });
+    }, cardRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="relative flex flex-col gap-10 rounded-[60px] bg-gradient-to-r from-card-from via-card-via via-40% to-white p-8 sm:p-12 lg:flex-row lg:gap-12 lg:p-14">
-      <p className="absolute -top-8 left-10 z-20 text-[64px] font-bold leading-none tracking-[-4px] text-gold/50 sm:-top-12 sm:left-14 sm:text-[96px]">
+    <div ref={cardRef} className="relative flex flex-col gap-10 rounded-[60px] bg-gradient-to-r from-card-from via-card-via via-40% to-white p-8 sm:p-12 lg:flex-row lg:gap-12 lg:p-14">
+      <p ref={numberRef} className="absolute -top-8 left-10 z-20 text-[64px] font-bold leading-none tracking-[-4px] text-gold/50 sm:-top-12 sm:left-14 sm:text-[96px]">
         {work.number}
       </p>
 
       <div className="flex flex-1 flex-col">
         <div className="overflow-hidden rounded-3xl border border-mist shadow-[0px_24px_48px_-8px_rgba(0,0,0,0.09)] lg:h-full">
           <img
+            ref={imgRef}
             src={work.mockup}
             alt={`${work.title} 목업`}
             loading="lazy"
