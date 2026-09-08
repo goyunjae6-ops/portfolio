@@ -15,14 +15,14 @@ export default function About() {
   const [wordsRef, progress] = useScrollProgress();
 
   return (
-    <section id="about" className="relative scroll-mt-24 bg-charcoal px-6 pb-16 pt-24 sm:px-10 lg:-mt-[2px] lg:min-h-[1080px] lg:px-[80px] lg:pb-24 lg:pt-[140px]">
-      <div className="relative -top-[55px] mx-auto flex max-w-[1350px] justify-center">
+    <section id="about" className="relative scroll-mt-24 bg-charcoal px-6 pb-16 sm:px-10 lg:-mt-[2px] lg:min-h-[1080px] lg:px-[80px] lg:pb-24">
+      <div className="mx-auto flex max-w-[1350px] justify-center pt-[24px] sm:pt-[40px] lg:pt-[56px]">
         <span className="inline-flex h-[70px] items-center justify-center rounded-full border-2 border-white px-9 text-xl font-bold text-white sm:h-[100px] sm:text-[35px]">
           ABOUT ME
         </span>
       </div>
 
-      <div ref={wordsRef} className="relative -top-[30px] mx-auto mt-8 w-full max-w-[1350px] overflow-hidden">
+      <div ref={wordsRef} className="relative mx-auto mt-[55px] w-full max-w-[1350px] overflow-hidden">
         <div className="flex flex-col items-center gap-3">
           {roleWords.map(({ text, side }, i) => {
             const start = 0.15 + i * 0.08;
@@ -51,7 +51,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="relative top-[160px] mx-auto mb-[220px] mt-10 grid max-w-[1350px] grid-cols-1 gap-10 lg:grid-cols-[460px_1fr] lg:gap-10">
+      <div className="relative top-[160px] mx-auto mb-[220px] mt-[55px] grid max-w-[1350px] grid-cols-1 gap-10 lg:grid-cols-[460px_1fr] lg:gap-10">
         <div className="relative top-[30px] mx-auto aspect-[460/575] w-full max-w-[460px] overflow-hidden rounded-[32px] bg-ink">
           <img src={aboutPhoto} alt="고윤재 소개 사진" loading="lazy" decoding="async" className="h-full w-full object-cover" />
         </div>

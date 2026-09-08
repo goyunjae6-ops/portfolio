@@ -12,6 +12,8 @@ export default function Works() {
   const showcaseRef = useRef(null);
   const showcaseImgRef = useRef(null);
   const showcaseTextRef = useRef(null);
+  const skillsBadgeRef = useRef(null);
+  const skillsGridRef = useRef(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -34,20 +36,48 @@ export default function Works() {
 
       tl.fromTo(showcaseImgRef.current, { scale: 0.4 }, { scale: 1.8, ease: "none" }, 0);
       tl.fromTo(showcaseTextRef.current, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, ease: "none" }, 0);
+
+      // Skills & Tools section rises into view as it's scrolled to, matching
+      // the same reveal-on-scroll language used across the other sections.
+      gsap.from(skillsBadgeRef.current, {
+        opacity: 0,
+        y: 40,
+        scale: 0.9,
+        duration: 0.7,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: skillsBadgeRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      gsap.from(skillsGridRef.current.children, {
+        opacity: 0,
+        y: 60,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: skillsGridRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
     }, showcaseRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="works" className="relative scroll-mt-24 rounded-t-[60px] bg-cream px-4 pb-0 pt-10 sm:px-8 lg:px-0">
-      <div className="mx-auto flex max-w-[1920px] justify-center pb-8">
+    <section id="works" className="relative scroll-mt-24 rounded-t-[60px] bg-cream px-4 pb-0 sm:px-8 lg:px-0">
+      <div className="mx-auto flex max-w-[1920px] justify-center pb-[55px] pt-[24px] sm:pt-[40px] lg:pt-[56px]">
         <span className="inline-flex h-[70px] items-center justify-center rounded-full border-2 border-ink px-9 text-xl font-bold text-ink sm:h-[100px] sm:text-[35px]">
           WORKS
         </span>
       </div>
 
-      <div className="mx-auto flex max-w-[1350px] flex-col px-2 pt-6 sm:px-6 lg:px-0">
+      <div className="mx-auto flex max-w-[1350px] flex-col px-2 sm:px-6 lg:px-0">
         {works.map((work, i) => (
           <div key={work.number} className="sticky pb-24 sm:pb-32 lg:pb-40" style={{ top: STICKY_OFFSET, zIndex: i + 1 }}>
             <WorkCard work={work} />
@@ -56,12 +86,13 @@ export default function Works() {
       </div>
 
       {/* Skills Section */}
-      <div className="mt-6 bg-white px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto flex max-w-[1350px] flex-col gap-3 pb-12 text-center sm:pb-16">
-          <h2 className="text-3xl font-bold text-ink sm:text-[44px]">Skills & Tools</h2>
-          <p className="text-sm text-muted sm:text-base">직접 사용하며 익힌 만큼, 숙련도 그대로 보여드립니다</p>
+      <div className="bg-white px-6 pb-16 pt-[24px] sm:px-10 sm:pb-20 sm:pt-[40px] lg:px-16 lg:pt-[56px]">
+        <div ref={skillsBadgeRef} className="mx-auto flex max-w-[1350px] flex-col items-center gap-3 pb-[55px] text-center">
+          <span className="inline-flex h-[70px] items-center justify-center rounded-full border-2 border-ink px-9 text-xl font-bold text-ink sm:h-[100px] sm:text-[35px]">
+            SKILLS & TOOLS
+          </span>
         </div>
-        <div className="mx-auto grid max-w-[1350px] grid-cols-1 gap-14 sm:grid-cols-2 sm:gap-x-20 sm:gap-y-16">
+        <div ref={skillsGridRef} className="mx-auto grid max-w-[1350px] grid-cols-1 gap-14 sm:grid-cols-2 sm:gap-x-20 sm:gap-y-16">
           {skillGroups.map((group) => (
             <SkillGroup key={group.title} group={group} />
           ))}
