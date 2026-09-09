@@ -201,12 +201,11 @@ html {
     justify-content: center;
     cursor: pointer;
     gap: 10px;
-    transition: background-color 0.15s ease, color 0.15s ease;
   }
 
   .btn-resume {
     left: 472px;
-    background-color: #140f17;
+    background-color: var(--color-ink);
     color: #ffffff;
     border: 2px solid #ffffff;
   }
@@ -218,12 +217,12 @@ html {
   .btn-github {
     left: 718px;
     background-color: transparent;
-    color: #140f17;
-    border: 2px solid #000000;
+    color: var(--color-ink);
+    border: 2px solid var(--color-ink);
   }
 
   .btn-github:hover {
-    background-color: #140f17;
+    background-color: var(--color-ink);
     color: #ffffff;
   }
 

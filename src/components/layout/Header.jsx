@@ -21,7 +21,7 @@ export default function Header() {
           scrolled ? "shadow-[0px_4px_16px_0px_rgba(0,0,0,0.08)]" : "shadow-none"
         }`}
       >
-        <a href="#hero" className="no-cursor-dot flex items-center gap-1.5 text-xl font-bold text-ink visited:text-ink sm:text-[28px]">
+        <a href="#hero" className="no-cursor-dot flex w-[140px] items-center gap-2 text-xl font-bold text-ink visited:text-ink sm:text-[28px]">
           <LogoIcon />
           <LogoText />
         </a>
