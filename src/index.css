@@ -100,7 +100,7 @@ html {
   text-decoration-line: underline;
   text-decoration-color: rgba(201, 169, 110, 0.55);
   text-decoration-thickness: 7px;
-  text-underline-offset: 8px;
+  text-underline-offset: 11px;
 }
 
 /* Hero — exact 1920x950 canvas values, scaled responsively to fit the viewport at lg+ */
@@ -167,7 +167,7 @@ html {
     text-decoration-line: underline;
     text-decoration-color: rgba(201, 169, 110, 0.55);
     text-decoration-thickness: 7px;
-    text-underline-offset: 10px;
+    text-underline-offset: 13px;
   }
 
   /* GSAP SplitText wraps each word in inline-block divs for the reveal mask,
@@ -177,7 +177,7 @@ html {
     text-decoration-line: underline;
     text-decoration-color: rgba(201, 169, 110, 0.55);
     text-decoration-thickness: 7px;
-    text-underline-offset: 10px;
+    text-underline-offset: 13px;
   }
 
 

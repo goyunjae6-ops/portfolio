@@ -1,4 +1,4 @@
-import work1Mockup from "../assets/images/work1-mockup.png";
+import work1DesktopBase from "../assets/images/work1-desktop-base.png";
 import work2Mockup from "../assets/images/work2-mockup.png";
 import work3Mockup from "../assets/images/work3-mockup.png";
 
@@ -6,7 +6,7 @@ export const navLinks = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
   { label: "Works", href: "#works" },
-  { label: "Contact", href: "#contact" },
+  { label: "Skills & Tools", href: "#skills" },
 ];
 
 export const works = [
@@ -20,7 +20,7 @@ export const works = [
       "ESG 경영으로 잘 알려진 이케아(IKEA) 공식 온라인몰을 모티브로, 5인 팀(Team_Synergos)이 UI/UX 구조와 장바구니·위시리스트 등 핵심 기능을 재현한 리디자인 프로젝트입니다. 벤치마킹 분석부터 페르소나 설계, 와이어프레임, 시안, 퍼블리싱까지 전 과정을 거쳐 25종의 페이지를 GitHub Pages로 배포했습니다.",
     problem:
       "이케아 코리아를 심층 분석하고 한샘몰·오늘의집·MUJI를 벤치마킹해 개선 포인트를 도출했습니다. 3종의 페르소나와 사용자 여정지도를 설계해 리디자인 방향을 구체화하고, 이를 바탕으로 반응형(1280/1024/640) 와이어프레임을 제작해 실제 구현의 기준을 마련했습니다.",
-    mockup: work1Mockup,
+    mockup: work1DesktopBase,
     imageFit: "contain",
     siteUrl: "https://heebon00.github.io/Team_Synergos_esg/",
     githubUrl: "https://github.com/heebon00/Team_Synergos_esg",

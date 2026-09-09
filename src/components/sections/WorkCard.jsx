@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Button from "../common/Button";
 import TechTag from "../common/TechTag";
 import arrowUpRight from "../../assets/icons/arrow-up-right.svg";
-import githubIcon from "../../assets/icons/github.svg";
+import githubIcon from "../../assets/icons/github-hero.svg";
 import fileTextIcon from "../../assets/icons/file-text.svg";
 
 gsap.registerPlugin(ScrollTrigger);

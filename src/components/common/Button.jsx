@@ -1,5 +1,5 @@
 export default function Button({ as: As = "a", variant = "solid", icon, iconAlt = "", size = "md", className = "", children, ...props }) {
-  const base = "inline-flex items-center justify-center gap-2 rounded-full transition-colors";
+  const base = "group inline-flex items-center justify-center gap-2 rounded-full transition-colors";
 
   const variants = {
     solid: "font-semibold bg-ink text-white visited:text-white border-2 border-white hover:bg-black",
@@ -17,7 +17,13 @@ export default function Button({ as: As = "a", variant = "solid", icon, iconAlt 
 
   return (
     <As className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} {...props}>
-      {icon && <img src={icon} alt={iconAlt} className="size-[18px]" />}
+      {icon && (
+        <img
+          src={icon}
+          alt={iconAlt}
+          className={`size-[18px] ${variant === "outline" ? "group-hover:invert" : ""}`}
+        />
+      )}
       {children}
     </As>
   );

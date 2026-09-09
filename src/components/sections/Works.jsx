@@ -86,7 +86,7 @@ export default function Works() {
       </div>
 
       {/* Skills Section */}
-      <div className="bg-white px-6 pb-16 pt-[24px] sm:px-10 sm:pb-20 sm:pt-[40px] lg:px-16 lg:pt-[56px]">
+      <div id="skills" className="scroll-mt-24 bg-white px-6 pb-16 pt-[24px] sm:px-10 sm:pb-20 sm:pt-[40px] lg:px-16 lg:pt-[56px]">
         <div ref={skillsBadgeRef} className="mx-auto flex max-w-[1350px] flex-col items-center gap-3 pb-[55px] text-center">
           <span className="inline-flex h-[70px] items-center justify-center rounded-full border-2 border-ink px-9 text-xl font-bold text-ink sm:h-[100px] sm:text-[35px]">
             SKILLS & TOOLS
