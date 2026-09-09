@@ -7,7 +7,12 @@ import { useEffect, useRef, useState } from "react";
  * whatever is underneath, so it works over any background color for free.
  *
  * Elements marked `.cursor-accent` (e.g. the Footer's "Let's Connect" link)
- * swap the dot to a solid black fill instead of the difference-blend white.
+ * swap the dot to a solid ink fill instead of the difference-blend white.
+ * Elements with a `data-cursor-color="#hex"` attribute swap it to that exact
+ * solid color instead, so the dot matches that element's own background
+ * rather than always reading as black. The header nav pills intentionally
+ * skip this and use the plain difference-blend dot, same as the header's
+ * "Let's Connect" button, so hovering them shows the same punched-hole look.
  *
  * The grown/shrunk state is driven by React state + inline style rather than
  * toggling a CSS class, because the class-toggle approach silently failed to
@@ -17,6 +22,7 @@ import { useEffect, useRef, useState } from "react";
 export default function CursorDot() {
   const dotRef = useRef(null);
   const [variant, setVariant] = useState("none");
+  const [customColor, setCustomColor] = useState(null);
 
   useEffect(() => {
     const skip = window.matchMedia("(hover: none), (pointer: coarse), (prefers-reduced-motion: reduce)").matches;
@@ -36,12 +42,19 @@ export default function CursorDot() {
 
     const onMouseOver = (e) => {
       const target = e.target.closest("a, button");
+      const colorTarget = target && target.closest("[data-cursor-color]");
       if (!target || target.closest(".no-cursor-dot")) {
         setVariant("none");
+        setCustomColor(null);
+      } else if (colorTarget) {
+        setVariant("custom");
+        setCustomColor(colorTarget.dataset.cursorColor);
       } else if (target.closest(".cursor-accent")) {
         setVariant("accent");
+        setCustomColor(null);
       } else {
         setVariant("link");
+        setCustomColor(null);
       }
     };
 
@@ -65,7 +78,9 @@ export default function CursorDot() {
 
   const grownStyle = { width: 60, height: 60, top: -30, left: -30, opacity: 1 };
   const style =
-    variant === "accent"
+    variant === "custom"
+      ? { ...grownStyle, backgroundColor: customColor, mixBlendMode: "normal" }
+      : variant === "accent"
       ? { ...grownStyle, backgroundColor: "var(--color-ink)", mixBlendMode: "normal" }
       : variant === "link"
       ? grownStyle

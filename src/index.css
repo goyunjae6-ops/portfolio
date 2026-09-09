@@ -93,6 +93,16 @@ html {
   opacity: 1;
 }
 
+/* GSAP SplitText wraps each word in inline-block divs for the reveal mask,
+   which breaks text-decoration propagation from the parent span, so the
+   underline is re-applied directly on the split word boxes here. */
+.name-mobile > div > div {
+  text-decoration-line: underline;
+  text-decoration-color: rgba(201, 169, 110, 0.55);
+  text-decoration-thickness: 7px;
+  text-underline-offset: 8px;
+}
+
 /* Hero — exact 1920x950 canvas values, scaled responsively to fit the viewport at lg+ */
 @media (min-width: 1024px) {
   .hero-outer {
@@ -160,6 +170,17 @@ html {
     text-underline-offset: 10px;
   }
 
+  /* GSAP SplitText wraps each word in inline-block divs for the reveal mask,
+     which breaks text-decoration propagation from the parent span, so the
+     underline is re-applied directly on the split word boxes here. */
+  .name > div > div {
+    text-decoration-line: underline;
+    text-decoration-color: rgba(201, 169, 110, 0.55);
+    text-decoration-thickness: 7px;
+    text-underline-offset: 10px;
+  }
+
+
   .suffix {
     font-size: 80px;
     font-weight: 500;
@@ -180,6 +201,7 @@ html {
     justify-content: center;
     cursor: pointer;
     gap: 10px;
+    transition: background-color 0.15s ease, color 0.15s ease;
   }
 
   .btn-resume {
@@ -189,11 +211,24 @@ html {
     border: 2px solid #ffffff;
   }
 
+  .btn-resume:hover {
+    background-color: #000000;
+  }
+
   .btn-github {
     left: 718px;
     background-color: transparent;
     color: #140f17;
     border: 2px solid #000000;
+  }
+
+  .btn-github:hover {
+    background-color: #140f17;
+    color: #ffffff;
+  }
+
+  .btn-github:hover img {
+    filter: brightness(0) invert(1);
   }
 
 }
