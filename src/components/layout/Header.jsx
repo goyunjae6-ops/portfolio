@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { navLinks } from "../../data/content";
 import Button from "../common/Button";
+import LogoIcon from "../common/LogoIcon";
+import LogoText from "../common/LogoText";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,8 +21,9 @@ export default function Header() {
           scrolled ? "shadow-[0px_4px_16px_0px_rgba(0,0,0,0.08)]" : "shadow-none"
         }`}
       >
-        <a href="#hero" className="no-cursor-dot text-xl font-bold text-ink visited:text-ink sm:text-[28px]">
-          yoonjae
+        <a href="#hero" className="no-cursor-dot flex items-center gap-1.5 text-xl font-bold text-ink visited:text-ink sm:text-[28px]">
+          <LogoIcon />
+          <LogoText />
         </a>
 
         <nav className="hidden items-center gap-3.5 md:flex lg:gap-6">
