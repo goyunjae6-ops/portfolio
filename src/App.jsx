@@ -3,8 +3,9 @@ import Footer from "./components/layout/Footer";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import Works from "./components/sections/Works";
-import Reviews from "./components/sections/Reviews";
+import Process from "./components/sections/Process";
 import CursorDot from "./components/common/CursorDot";
+import Chatbot from "./components/common/Chatbot";
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
         <Hero />
         <About />
         <Works />
-        <Reviews />
+        <Process />
       </main>
       <Footer />
+      <Chatbot />
     </>
   );
 }

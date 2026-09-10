@@ -77,22 +77,6 @@ html {
   }
 }
 
-.review-swiper .swiper-pagination-bullet {
-  width: 4px;
-  height: 4px;
-  border-radius: 2px;
-  background: var(--color-ink);
-  opacity: 0.2;
-  transition: width 0.2s ease;
-}
-
-.review-swiper .swiper-pagination-bullet-active {
-  width: 20px;
-  height: 4px;
-  border-radius: 6px;
-  opacity: 1;
-}
-
 /* GSAP SplitText wraps each word in inline-block divs for the reveal mask,
    which breaks text-decoration propagation from the parent span, so the
    underline is re-applied directly on the split word boxes here. */

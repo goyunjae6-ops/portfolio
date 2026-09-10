@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://goyunjae6-ops.github.io/portfolio/sitemap.xml

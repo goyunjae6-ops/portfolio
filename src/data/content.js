@@ -51,21 +51,30 @@ export const works = [
   },
 ];
 
-export const reviews = [
+export const process = [
   {
-    quote:
-      "From concept to execution, 고윤재 demonstrated a level of expertise that is truly commendable. They were responsive, flexible, and delivered a design that truly speaks to our target audience.",
-    author: "Sarah Johnson, Marketing Lead at Technlogia",
+    number: "01",
+    title: "리서치 & 기획",
+    summary: "벤치마킹과 페르소나 설계로 방향을 구체화합니다",
+    detail: "경쟁 서비스를 벤치마킹하고 페르소나와 사용자 여정지도를 설계해, 리디자인의 근거를 마련합니다.",
   },
   {
-    quote:
-      "From concept to execution, 고윤재 demonstrated a level of expertise that is truly commendable. They were responsive, flexible, and delivered a design that truly speaks to our target audience. The team's turned our vision into a reality, and we couldn't be happier.",
-    author: "Frank Berry, Chief Creative Officer at Gomi",
+    number: "02",
+    title: "디자인 & 설계",
+    summary: "반응형 와이어프레임으로 구현 기준을 세웁니다",
+    detail: "1280 / 1024 / 640 기준 반응형 와이어프레임과 Figma 시안을 제작해, 실제 퍼블리싱의 기준으로 삼습니다.",
   },
   {
-    quote:
-      "Working with 고윤재 was an absolute pleasure. Their attention to detail and creative flair truly set them apart. They took our vision and turned it into something beyond our expectations.",
-    author: "Michael Brown, Founder at Fabriks",
+    number: "03",
+    title: "개발 & 제작",
+    summary: "코드와 AI 툴로 결과물을 직접 완성합니다",
+    detail: "React·Tailwind·GSAP로 인터랙션을 구현하고, Stable Diffusion·RunwayML로 AI 영상 제작 파이프라인을 구축합니다.",
+  },
+  {
+    number: "04",
+    title: "검증 & 배포",
+    summary: "테스트와 최적화 후 결과물을 완성합니다",
+    detail: "FFmpeg 배치 처리로 렌더링 시간을 60% 단축하고, 프록시 편집 워크플로우로 협업 효율을 45% 개선한 뒤 배포까지 마무리합니다.",
   },
 ];
 
