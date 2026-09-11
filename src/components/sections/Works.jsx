@@ -34,7 +34,7 @@ export default function Works() {
         },
       });
 
-      tl.fromTo(showcaseImgRef.current, { scale: 0.4 }, { scale: 1.8, ease: "none" }, 0);
+      tl.fromTo(showcaseImgRef.current, { scale: 0.3 }, { scale: 7, ease: "none" }, 0);
       tl.fromTo(showcaseTextRef.current, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, ease: "none" }, 0);
 
       // Skills & Tools section rises into view as it's scrolled to, matching
@@ -100,8 +100,8 @@ export default function Works() {
       </div>
 
       {/* Showcase Section */}
-      <div ref={showcaseRef} className="flex items-center justify-center overflow-hidden rounded-t-[60px] bg-white px-6 py-20">
-        <div className="relative w-full max-w-[900px] overflow-hidden">
+      <div ref={showcaseRef} className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-white">
+        <div className="relative aspect-square w-[95vmin]">
           <img
             ref={showcaseImgRef}
             src={showcaseHalftone}
@@ -109,12 +109,12 @@ export default function Works() {
             aria-hidden="true"
             loading="lazy"
             decoding="async"
-            className="pointer-events-none aspect-square w-full will-change-transform"
+            className="pointer-events-none h-full w-full will-change-transform"
           />
-          <div ref={showcaseTextRef} className="absolute inset-0 flex flex-col items-center justify-center gap-1 text-center text-white">
-            <p className="text-[28px] sm:text-[48px] lg:text-[60px]">Pixels</p>
-            <p className="text-[28px] sm:text-[48px] lg:text-[60px]">with Purpose</p>
-            <p className="mt-2 text-[10px] text-[#5f6567]">Since 2016</p>
+          <div ref={showcaseTextRef} className="absolute inset-0 flex flex-col items-center justify-center gap-1 text-center font-light text-white">
+            <p className="text-[40px] sm:text-[70px] lg:text-[100px]">Pixels</p>
+            <p className="text-[40px] sm:text-[70px] lg:text-[100px]">with Purpose</p>
+            <p className="mt-3 text-xs sm:text-sm text-[#5f6567]">Since 2016</p>
           </div>
         </div>
       </div>
