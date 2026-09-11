@@ -51,7 +51,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-[9999] flex flex-col items-end gap-3 sm:bottom-8 sm:right-8">
+    <div className="animate-bounce-in fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3 sm:bottom-10 sm:right-10">
       {open && (
         <div
           role="dialog"
@@ -123,15 +123,39 @@ export default function Chatbot() {
         </div>
       )}
 
-      <button
-        type="button"
-        onClick={() => (open ? closeChat() : setOpen(true))}
-        aria-label={open ? "챗봇 닫기" : "챗봇 열기"}
-        aria-expanded={open}
-        className="no-cursor-dot flex size-14 items-center justify-center rounded-full bg-ink text-2xl text-white shadow-[0px_8px_24px_0px_rgba(0,0,0,0.24)] transition-transform hover:scale-105"
-      >
-        {open ? "✕" : "💬"}
-      </button>
+      <div className="relative flex items-center justify-center">
+        {!open && (
+          <svg
+            className="pointer-events-none absolute -inset-3 animate-orbit"
+            viewBox="0 0 100 100"
+            aria-hidden="true"
+          >
+            <defs>
+              <path id="chatbot-orbit-path" d="M 50,50 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" />
+            </defs>
+            <text className="fill-ink text-[9px] font-semibold tracking-[0.2em]">
+              <textPath
+                href="#chatbot-orbit-path"
+                startOffset="0%"
+                textLength="263.9"
+                lengthAdjust="spacing"
+              >
+                CHATBOT • CHATBOT • CHATBOT • CHATBOT •{" "}
+              </textPath>
+            </text>
+          </svg>
+        )}
+
+        <button
+          type="button"
+          onClick={() => (open ? closeChat() : setOpen(true))}
+          aria-label={open ? "챗봇 닫기" : "챗봇 열기"}
+          aria-expanded={open}
+          className="no-cursor-dot flex size-16 items-center justify-center rounded-full bg-ink text-3xl text-white shadow-[0px_8px_24px_0px_rgba(0,0,0,0.24)] transition-transform hover:scale-105"
+        >
+          {open ? "✕" : "🏃"}
+        </button>
+      </div>
     </div>
   );
 }
