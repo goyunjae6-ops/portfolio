@@ -67,7 +67,7 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-5 md:justify-start">
-            <Button as="a" href="resume.html" target="_blank" rel="noopener noreferrer" variant="dark" size="lg" className="btn-press border-2 border-white">
+            <Button as="a" href="resume.pdf" target="_blank" rel="noopener noreferrer" variant="dark" size="lg" className="btn-press border-2 border-white">
               📄 이력서 보기
             </Button>
             <Button as="a" href="https://github.com/goyunjae6-ops" target="_blank" rel="noopener noreferrer" variant="outline" size="lg" icon={githubIcon} iconAlt="GitHub" className="btn-press">
@@ -94,7 +94,7 @@ export default function Hero() {
         </p>
       </div>
 
-      <a href="resume.html" target="_blank" rel="noopener noreferrer" className="hero-btn btn-resume btn-press hidden lg:flex">
+      <a href="resume.pdf" target="_blank" rel="noopener noreferrer" className="hero-btn btn-resume btn-press hidden lg:flex">
         📄 이력서 보기
       </a>
       <a href="https://github.com/goyunjae6-ops" target="_blank" rel="noopener noreferrer" className="hero-btn btn-github btn-press hidden lg:flex">
