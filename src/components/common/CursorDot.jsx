@@ -34,10 +34,32 @@ export default function CursorDot() {
     let dotX = 0;
     let dotY = 0;
     let rafId;
+    let needsSnap = false;
 
     const onMouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      if (needsSnap) {
+        dotX = mouseX;
+        dotY = mouseY;
+        needsSnap = false;
+      }
+    };
+
+    // When the tab loses focus mid-hover (e.g. a target="_blank" link opens a
+    // new tab), no mouseout ever fires on this document, so the grown "link"
+    // state and the dot's trailing position would otherwise stay stuck until
+    // the tab is focused again — then it visibly flings across the screen to
+    // the cursor before shrinking back. Reset the visual state on blur and
+    // snap the trail (skip the ease) on the next move after regaining focus.
+    const resetDot = () => {
+      setVariant("none");
+      setCustomColor(null);
+      needsSnap = true;
+    };
+
+    const onVisibilityChange = () => {
+      if (document.hidden) resetDot();
     };
 
     const onMouseOver = (e) => {
@@ -67,11 +89,19 @@ export default function CursorDot() {
 
     window.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseover", onMouseOver);
+    document.addEventListener("mouseleave", resetDot);
+    window.addEventListener("blur", resetDot);
+    window.addEventListener("pageshow", resetDot);
+    document.addEventListener("visibilitychange", onVisibilityChange);
     rafId = requestAnimationFrame(tick);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseover", onMouseOver);
+      document.removeEventListener("mouseleave", resetDot);
+      window.removeEventListener("blur", resetDot);
+      window.removeEventListener("pageshow", resetDot);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       cancelAnimationFrame(rafId);
     };
   }, []);
