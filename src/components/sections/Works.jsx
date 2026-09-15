@@ -8,6 +8,38 @@ import showcaseHalftone from "../../assets/images/showcase-halftone.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Renders text as individual characters bowed along a shallow arc, like a
+// wide-angle lens curving the middle of the frame outward.
+function ArcLine({ text, accentFrom, accentClassName, amplitude, rotateMax, className }) {
+  const chars = text.split("");
+  const mid = (chars.length - 1) / 2;
+
+  return (
+    <p className={className}>
+      {chars.map((ch, i) => {
+        const t = mid === 0 ? 0 : (i - mid) / mid;
+        const isAccent = accentFrom !== undefined && i >= accentFrom;
+        return (
+          // Outer span is left untransformed so the jump animation (applied
+          // via GSAP on .arc-jump) doesn't clobber the arc's own transform.
+          <span key={i} className="arc-jump" style={{ display: "inline-block" }}>
+            <span
+              className={isAccent ? accentClassName : undefined}
+              style={{
+                display: "inline-block",
+                whiteSpace: ch === " " ? "pre" : undefined,
+                transform: `translateY(${-amplitude * (1 - t * t)}px) rotate(${t * rotateMax}deg)`,
+              }}
+            >
+              {ch}
+            </span>
+          </span>
+        );
+      })}
+    </p>
+  );
+}
+
 export default function Works() {
   const showcaseRef = useRef(null);
   const showcaseImgRef = useRef(null);
@@ -23,6 +55,7 @@ export default function Works() {
       // while the halftone dot pattern scales up and its caption brightens
       // in, mirroring the "Pixels with Purpose" reveal on the original
       // PixelPierNYC theme this site is based on.
+      let hasJumped = false;
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: showcaseRef.current,
@@ -31,6 +64,18 @@ export default function Works() {
           scrub: true,
           pin: true,
           anticipatePin: 1,
+          onUpdate: (self) => {
+            if (self.progress >= 0.95 && !hasJumped) {
+              hasJumped = true;
+              gsap.fromTo(
+                showcaseTextRef.current.querySelectorAll(".arc-jump"),
+                { y: 0 },
+                { y: -16, duration: 0.22, ease: "power2.out", stagger: 0.02, yoyo: true, repeat: 1 }
+              );
+            } else if (self.progress < 0.95) {
+              hasJumped = false;
+            }
+          },
         },
       });
 
@@ -111,10 +156,21 @@ export default function Works() {
             decoding="async"
             className="pointer-events-none h-full w-full will-change-transform"
           />
-          <div ref={showcaseTextRef} className="absolute inset-0 flex flex-col items-center justify-center gap-1 text-center font-light text-white">
-            <p className="text-[40px] sm:text-[70px] lg:text-[100px]">Pixels</p>
-            <p className="text-[40px] sm:text-[70px] lg:text-[100px]">with Purpose</p>
-            <p className="mt-3 text-xs sm:text-sm text-[#5f6567]">Since 2016</p>
+          <div ref={showcaseTextRef} className="absolute inset-0 flex flex-col items-center justify-center gap-1 text-center font-sans font-extrabold tracking-tight text-white">
+            <ArcLine
+              text="NO STOP,"
+              className="text-[40px] sm:text-[70px] lg:text-[100px]"
+              amplitude={6}
+              rotateMax={5}
+            />
+            <ArcLine
+              text="JUST GO!"
+              className="text-[40px] sm:text-[70px] lg:text-[100px]"
+              accentFrom={5}
+              accentClassName="text-gold text-[52px] sm:text-[92px] lg:text-[132px]"
+              amplitude={10}
+              rotateMax={7}
+            />
           </div>
         </div>
       </div>
