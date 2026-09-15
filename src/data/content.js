@@ -123,7 +123,10 @@ export const about = {
   roles: ["Frontend Developer", "Web Designer", "AI Video Creator", "Motion Editor"],
   birth: ["2004.02.17", "서울특별시 관악구 대학동", "010-5350-4654", "goyunjae6@gmail.com"],
   certificate: "1종보통 운전면허 (2024)",
-  education: "MBC 아카데미 · 생성형 AI를 활용한 반응형 웹콘텐츠 개발기획자 양성과정 (26.04 - 26.10)",
+  education: [
+    "삼성고등학교 (2023)",
+    "MBC 아카데미 · 생성형 AI를 활용한 반응형 웹콘텐츠 개발기획자 양성과정 (26.04 - 26.10 수료예정)",
+  ],
 };
 
 export const footer = {
