@@ -75,7 +75,7 @@ export default function Footer() {
               <MailIcon className="size-[18px]" />
               이메일 보내기
             </Button>
-            <Button as="a" href="resume.pdf" target="_blank" rel="noopener noreferrer" variant="outline" size="lg" className="btn-press">
+            <Button as="a" href="https://drive.google.com/file/d/1wLQz_KdGNbyDXVfEPuBPd0OJ6jeWAF9a/view?usp=sharing" target="_blank" rel="noopener noreferrer" variant="outline" size="lg" className="btn-press">
               <ArrowUpIcon className="size-[14px] rotate-45" />
               이력서 보기
             </Button>
