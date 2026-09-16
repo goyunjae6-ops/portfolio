@@ -73,8 +73,8 @@ export default function About() {
           <div className="relative top-[30px] flex flex-1 flex-col justify-between gap-5 rounded-2xl border border-white/20 px-7">
             <div aria-hidden="true" />
             <div className="flex flex-col gap-1.5">
-              <p className="text-[11px] font-bold tracking-[2px] text-gold">BIRTH</p>
-              <div className="text-sm leading-6 text-ivory">
+              <p className="text-base font-bold tracking-[2px] text-gold">BIRTH</p>
+              <div className="text-base leading-7 text-ivory">
                 {about.birth.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
@@ -82,8 +82,8 @@ export default function About() {
             </div>
             <div className="h-px bg-white/10" />
             <div className="flex flex-col gap-1.5">
-              <p className="text-[11px] font-bold tracking-[2px] text-gold">EDUCATION</p>
-              <div className="text-sm leading-6 text-ivory">
+              <p className="text-base font-bold tracking-[2px] text-gold">EDUCATION</p>
+              <div className="text-base leading-7 text-ivory">
                 {about.education.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
@@ -91,8 +91,8 @@ export default function About() {
             </div>
             <div className="h-px bg-white/10" />
             <div className="flex flex-col gap-1.5">
-              <p className="text-[11px] font-bold tracking-[2px] text-gold">CERTIFICATE</p>
-              <p className="text-sm leading-6 text-ivory">{about.certificate}</p>
+              <p className="text-base font-bold tracking-[2px] text-gold">CERTIFICATE</p>
+              <p className="text-base leading-7 text-ivory">{about.certificate}</p>
             </div>
             <div aria-hidden="true" />
           </div>

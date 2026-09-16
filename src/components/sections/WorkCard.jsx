@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 // moment the next card takes over the pinned spot and covers this one.
 export const STICKY_OFFSET = 140;
 
-export default function WorkCard({ work }) {
+export default function WorkCard({ work, getAnchorTop }) {
   const cardRef = useRef(null);
   const imgRef = useRef(null);
   const numberRef = useRef(null);
@@ -24,6 +24,18 @@ export default function WorkCard({ work }) {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    // getBoundingClientRect() (which ScrollTrigger's string-based "top bottom"
+    // / "bottom top" positions rely on) reports a `position: sticky` element's
+    // current *stuck* offset rather than its normal-flow position — and so
+    // does offsetTop, once it's actually stuck (verified empirically; sticky
+    // shifts the whole box, offset chain included). So if ScrollTrigger ever
+    // recalculates while this card happens to be stuck — on window resize, or
+    // on mount when the page loads already scrolled into Works — the measured
+    // trigger points come out wrong, and the number badge can fail to fade
+    // out before the next card covers it. `getAnchorTop`, passed down from
+    // Works.jsx, reads a plain (non-sticky, non-descendant-of-sticky) sibling
+    // marker instead, whose document position is always stable regardless of
+    // scroll position, so we compute absolute scroll thresholds from that.
     const ctx = gsap.context(() => {
       gsap.fromTo(
         imgRef.current,
@@ -33,8 +45,8 @@ export default function WorkCard({ work }) {
           ease: "none",
           scrollTrigger: {
             trigger: cardRef.current,
-            start: "top bottom",
-            end: "bottom top",
+            start: () => getAnchorTop() - window.innerHeight,
+            end: () => getAnchorTop() + cardRef.current.offsetHeight,
             scrub: true,
           },
         }
@@ -45,8 +57,8 @@ export default function WorkCard({ work }) {
         ease: "none",
         scrollTrigger: {
           trigger: cardRef.current,
-          start: `bottom ${STICKY_OFFSET + 60}`,
-          end: `bottom ${STICKY_OFFSET}`,
+          start: () => getAnchorTop() + cardRef.current.offsetHeight - (STICKY_OFFSET + 60),
+          end: () => getAnchorTop() + cardRef.current.offsetHeight - STICKY_OFFSET,
           scrub: true,
         },
       });
@@ -95,7 +107,7 @@ export default function WorkCard({ work }) {
 
   return (
     <div ref={cardRef} className="relative flex flex-col gap-10 rounded-[60px] bg-gradient-to-r from-card-from via-card-via via-40% to-white p-8 sm:p-12 lg:flex-row lg:gap-12 lg:p-14">
-      <p ref={numberRef} className="absolute -top-8 left-10 z-20 text-[64px] font-bold leading-none tracking-[-4px] text-gold/50 sm:-top-12 sm:left-14 sm:text-[96px]">
+      <p ref={numberRef} className="absolute -top-8 left-10 z-20 text-[64px] font-bold leading-none tracking-[-4px] text-gold/50 will-change-[opacity] sm:-top-12 sm:left-14 sm:text-[96px]">
         {work.number}
       </p>
 
@@ -116,17 +128,17 @@ export default function WorkCard({ work }) {
         <div className="flex flex-col gap-5">
           <h3 className="text-[32px] font-bold leading-[1.1] tracking-[-1px] text-ink sm:text-[52px]">{work.title}</h3>
 
-          <div className="flex flex-col gap-3 rounded-2xl border border-divider bg-white/50 px-6 py-5 text-sm">
+          <div className="flex flex-col gap-3 rounded-2xl border border-divider bg-white/50 px-6 py-5 text-base">
             <div className="flex items-center gap-4">
-              <span className="w-16 shrink-0 text-[11px] font-bold uppercase tracking-[1.5px] text-gold">기간</span>
+              <span className="w-20 shrink-0 text-base font-bold uppercase tracking-[1.5px] text-gold">기간</span>
               <span className="font-medium text-ink">{work.period}</span>
             </div>
             <div className="flex items-center gap-4">
-              <span className="w-16 shrink-0 text-[11px] font-bold uppercase tracking-[1.5px] text-gold">기여도</span>
+              <span className="w-20 shrink-0 text-base font-bold uppercase tracking-[1.5px] text-gold">기여도</span>
               <span className="font-medium text-ink">{work.contribution}</span>
             </div>
             <div className="flex items-start gap-2.5">
-              <span className="w-16 shrink-0 pt-0.5 text-[11px] font-bold uppercase tracking-[1.5px] text-gold">스택</span>
+              <span className="w-20 shrink-0 pt-0.5 text-base font-bold uppercase tracking-[1.5px] text-gold">스택</span>
               <div className="flex flex-1 flex-wrap gap-1.5">
                 {work.stack.map((tech) => (
                   <TechTag key={tech}>{tech}</TechTag>
@@ -136,19 +148,19 @@ export default function WorkCard({ work }) {
           </div>
 
           <div className="flex flex-col gap-2">
-            <p className="text-[11px] font-bold uppercase tracking-[2px] text-gold">개요</p>
-            <p className="line-clamp-3 text-sm leading-[1.7] text-body-grey">{work.overview}</p>
+            <p className="text-base font-bold uppercase tracking-[2px] text-gold">개요</p>
+            <p className="line-clamp-3 text-base leading-[1.7] text-body-grey">{work.overview}</p>
           </div>
 
           <div className="flex flex-col gap-2">
-            <p className="text-[11px] font-bold uppercase tracking-[2px] text-gold">문제해결</p>
-            <p className="line-clamp-3 text-sm leading-[1.7] text-body-grey">{work.problem}</p>
+            <p className="text-base font-bold uppercase tracking-[2px] text-gold">문제해결</p>
+            <p className="line-clamp-3 text-base leading-[1.7] text-body-grey">{work.problem}</p>
           </div>
 
           <button
             type="button"
             onClick={() => setDetailsOpen(true)}
-            className="self-start text-xs font-bold text-gold underline decoration-gold/40 underline-offset-4 transition-colors hover:text-ink"
+            className="self-start text-base font-bold text-gold underline decoration-gold/40 underline-offset-4 transition-colors hover:text-ink"
           >
             더보기
           </button>
@@ -160,17 +172,17 @@ export default function WorkCard({ work }) {
       <Modal open={detailsOpen} onClose={() => setDetailsOpen(false)}>
         <h3 className="pr-10 text-2xl font-bold leading-[1.2] text-ink sm:text-[32px]">{work.title}</h3>
 
-        <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-divider bg-mist/40 px-6 py-5 text-sm">
+        <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-divider bg-mist/40 px-6 py-5 text-base">
           <div className="flex items-center gap-4">
-            <span className="w-16 shrink-0 text-[11px] font-bold uppercase tracking-[1.5px] text-gold">기간</span>
+            <span className="w-20 shrink-0 text-base font-bold uppercase tracking-[1.5px] text-gold">기간</span>
             <span className="font-medium text-ink">{work.period}</span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="w-16 shrink-0 text-[11px] font-bold uppercase tracking-[1.5px] text-gold">기여도</span>
+            <span className="w-20 shrink-0 text-base font-bold uppercase tracking-[1.5px] text-gold">기여도</span>
             <span className="font-medium text-ink">{work.contribution}</span>
           </div>
           <div className="flex items-start gap-2.5">
-            <span className="w-16 shrink-0 pt-0.5 text-[11px] font-bold uppercase tracking-[1.5px] text-gold">스택</span>
+            <span className="w-20 shrink-0 pt-0.5 text-base font-bold uppercase tracking-[1.5px] text-gold">스택</span>
             <div className="flex flex-1 flex-wrap gap-1.5">
               {work.stack.map((tech) => (
                 <TechTag key={tech}>{tech}</TechTag>
@@ -180,13 +192,13 @@ export default function WorkCard({ work }) {
         </div>
 
         <div className="mt-6 flex flex-col gap-2">
-          <p className="text-[11px] font-bold uppercase tracking-[2px] text-gold">개요</p>
-          <p className="text-sm leading-[1.7] text-body-grey">{work.overview}</p>
+          <p className="text-base font-bold uppercase tracking-[2px] text-gold">개요</p>
+          <p className="text-base leading-[1.7] text-body-grey">{work.overview}</p>
         </div>
 
         <div className="mt-6 flex flex-col gap-2">
-          <p className="text-[11px] font-bold uppercase tracking-[2px] text-gold">문제해결</p>
-          <p className="text-sm leading-[1.7] text-body-grey">{work.problem}</p>
+          <p className="text-base font-bold uppercase tracking-[2px] text-gold">문제해결</p>
+          <p className="text-base leading-[1.7] text-body-grey">{work.problem}</p>
         </div>
 
         <div className="mt-8">{linkButtons}</div>

@@ -20,7 +20,7 @@ export default function Chatbot() {
     // Eases the button up by up to 40px as the page bottom approaches, so it
     // clears the footer's "맨 위로" link instead of sitting on top of it.
     const EASE_DISTANCE = 120;
-    const MAX_LIFT = 40;
+    const MAX_LIFT = 50;
 
     function updateLift() {
       const doc = document.documentElement;
@@ -88,8 +88,8 @@ export default function Chatbot() {
           >
             <div className="flex items-center justify-between border-b border-divider px-5 py-4">
               <div>
-                <p className="text-sm font-bold text-ink">포트폴리오 챗봇 🤖</p>
-                <p className="text-xs text-muted">궁금한 걸 물어보세요</p>
+                <p className="text-base font-bold text-ink">포트폴리오 챗봇 🤖</p>
+                <p className="text-base text-muted">궁금한 걸 물어보세요</p>
               </div>
               <button
                 type="button"
@@ -101,11 +101,11 @@ export default function Chatbot() {
               </button>
             </div>
 
-            <div ref={scrollRef} className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 py-4">
+            <div ref={scrollRef} className="flex flex-1 flex-col gap-2 overflow-y-auto px-4 py-4">
               {messages.map((m, i) => (
                 <div
                   key={i}
-                  className={`max-w-[85%] whitespace-pre-line break-keep rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                  className={`max-w-[85%] whitespace-pre-line break-keep rounded-2xl px-4 py-2 text-base leading-snug ${
                     m.role === "bot" ? "self-start bg-tag text-ink" : "self-end bg-ink text-white"
                   }`}
                 >
@@ -113,7 +113,7 @@ export default function Chatbot() {
                 </div>
               ))}
               {typing && (
-                <div className="self-start rounded-2xl bg-tag px-4 py-2.5 text-sm text-muted">입력 중...</div>
+                <div className="self-start rounded-2xl bg-tag px-4 py-2 text-base text-muted">입력 중...</div>
               )}
             </div>
 
@@ -123,7 +123,7 @@ export default function Chatbot() {
                   key={q}
                   type="button"
                   onClick={() => sendMessage(q)}
-                  className="no-cursor-dot shrink-0 rounded-full bg-pill px-3.5 py-1.5 text-xs font-medium text-[#333] transition-colors hover:bg-[#333] hover:text-pill"
+                  className="no-cursor-dot shrink-0 rounded-full bg-pill px-4 py-2 text-base font-medium text-[#333] transition-colors hover:bg-[#333] hover:text-pill"
                 >
                   {q}
                 </button>
@@ -137,7 +137,7 @@ export default function Chatbot() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="메시지를 입력하세요"
                 aria-label="메시지 입력"
-                className="h-10 flex-1 rounded-full border border-divider bg-cream px-4 text-sm text-ink outline-none focus:border-ink"
+                className="h-10 flex-1 rounded-full border border-divider bg-cream px-4 text-base text-ink outline-none focus:border-ink"
               />
               <button
                 type="submit"

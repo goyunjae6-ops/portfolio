@@ -1,6 +1,6 @@
 export default function TechTag({ children }) {
   return (
-    <span className="rounded-full bg-tag px-2.5 py-1 text-xs font-medium text-ink">
+    <span className="rounded-full bg-tag px-3 py-1.5 text-base font-medium text-ink">
       {children}
     </span>
   );

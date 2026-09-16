@@ -60,7 +60,7 @@ export default function Process() {
           <span className="inline-flex h-[70px] items-center justify-center rounded-full border-2 border-ink px-9 text-xl font-bold text-ink sm:h-[100px] sm:text-[35px]">
             HOW I WORK
           </span>
-          <p className="max-w-[520px] text-sm text-muted sm:text-base">
+          <p className="max-w-[520px] text-base text-muted">
             기획부터 배포까지, 4단계로 직접 부딪히며 결과를 만듭니다.
           </p>
         </div>
@@ -97,14 +97,14 @@ export default function Process() {
                 className="flex flex-col gap-4 rounded-[24px] border border-divider bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-gold/60 hover:shadow-[0px_20px_36px_-12px_rgba(0,0,0,0.14)]"
               >
                 <div className="flex items-center justify-between">
-                  <span className={`text-[13px] font-bold tracking-[2px] transition-colors duration-300 ${active ? "text-gold" : "text-muted"}`}>
+                  <span className={`text-base font-bold tracking-[2px] transition-colors duration-300 ${active ? "text-gold" : "text-muted"}`}>
                     {step.number}
                   </span>
                   <Icon className="text-ink" />
                 </div>
                 <h3 className="text-lg font-bold text-ink">{step.title}</h3>
-                <p className="text-sm font-medium leading-[1.6] text-body-grey">{step.summary}</p>
-                <p className="text-xs leading-[1.7] text-muted">{step.detail}</p>
+                <p className="text-base font-medium leading-[1.6] text-body-grey">{step.summary}</p>
+                <p className="text-base leading-[1.7] text-muted">{step.detail}</p>
               </div>
             );
           })}

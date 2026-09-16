@@ -60,12 +60,12 @@ export default function Footer() {
         {/* CTA */}
         <div className="flex flex-col gap-8 border-b border-divider pb-14 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-[11px] font-bold tracking-[2px] text-gold">GET IN TOUCH</p>
+            <p className="text-base font-bold tracking-[2px] text-gold">GET IN TOUCH</p>
             <a href={`mailto:${footer.email}`} className="cursor-accent inline-block pt-3 text-ink visited:text-ink transition-colors hover:text-gold">
               <p className="font-normal leading-[0.95] text-[64px] sm:text-[90px] md:text-[102px]">Let&rsquo;s</p>
               <p className="font-normal leading-[0.95] text-[64px] sm:text-[90px] md:text-[102px]">Connect</p>
             </a>
-            <p className="mt-4 max-w-[420px] text-sm text-muted sm:text-base">
+            <p className="mt-4 max-w-[420px] text-base text-muted">
               새로운 프로젝트나 협업 제안이 있다면 언제든 편하게 연락 주세요.
             </p>
           </div>
@@ -86,14 +86,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 border-b border-divider py-14 sm:grid-cols-3">
           <div className="flex flex-col gap-2">
             <p className="text-base font-bold text-ink">{footer.name}</p>
-            <p className="text-sm text-muted">{footer.role}</p>
+            <p className="text-base text-muted">{footer.role}</p>
           </div>
 
           <div className="flex flex-col gap-3">
-            <p className="text-[11px] font-bold tracking-[2px] text-gold">QUICK LINKS</p>
+            <p className="text-base font-bold tracking-[2px] text-gold">QUICK LINKS</p>
             <nav className="flex flex-col gap-2">
               {navLinks.map((link) => (
-                <a key={link.label} href={link.href} className="text-sm text-ink visited:text-ink transition-colors hover:text-gold">
+                <a key={link.label} href={link.href} className="text-base text-ink visited:text-ink transition-colors hover:text-gold">
                   {link.label}
                 </a>
               ))}
@@ -101,8 +101,8 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <p className="text-[11px] font-bold tracking-[2px] text-gold">CONNECT</p>
-            <a href={`mailto:${footer.email}`} className="text-sm text-ink visited:text-ink transition-colors hover:text-gold">
+            <p className="text-base font-bold tracking-[2px] text-gold">CONNECT</p>
+            <a href={`mailto:${footer.email}`} className="text-base text-ink visited:text-ink transition-colors hover:text-gold">
               {footer.email}
             </a>
             <div className="mt-1 flex gap-3">
@@ -127,8 +127,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
-          <p className="text-xs text-ink">{footer.copyright}</p>
-          <a href="#hero" className="flex items-center gap-1.5 text-xs text-ink visited:text-ink transition-colors hover:text-gold">
+          <p className="text-base text-ink">{footer.copyright}</p>
+          <a href="#hero" className="flex items-center gap-1.5 text-base text-ink visited:text-ink transition-colors hover:text-gold">
             맨 위로
             <ArrowUpIcon />
           </a>

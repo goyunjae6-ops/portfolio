@@ -12,7 +12,7 @@ export default function Button({ as: As = "a", variant = "solid", icon, iconAlt 
     lg: "h-[60px] px-8 text-[18px]",
     md: "h-[52px] px-6 text-[16px]",
     nav: "h-10 px-5 text-base lg:px-7 lg:text-xl",
-    connect: "h-10 w-[110px] text-sm sm:w-[140px] sm:text-base",
+    connect: "h-10 w-[130px] text-base sm:w-[150px]",
   };
 
   return (

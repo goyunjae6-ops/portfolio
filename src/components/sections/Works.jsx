@@ -46,6 +46,7 @@ export default function Works() {
   const showcaseTextRef = useRef(null);
   const skillsBadgeRef = useRef(null);
   const skillsGridRef = useRef(null);
+  const anchorRefs = useRef([]);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -124,8 +125,20 @@ export default function Works() {
 
       <div className="mx-auto flex max-w-[1350px] flex-col px-2 sm:px-6 lg:px-0">
         {works.map((work, i) => (
-          <div key={work.number} className="sticky pb-24 sm:pb-32 lg:pb-40" style={{ top: STICKY_OFFSET, zIndex: i + 1 }}>
-            <WorkCard work={work} />
+          <div key={work.number} className="contents">
+            {/* Non-sticky marker sibling: `position: sticky` elements report
+                their current *stuck* offset (not their static layout
+                position) from both getBoundingClientRect() and offsetTop
+                once they're actually stuck, so WorkCard's scroll-linked
+                animations read this plain sibling's stable position instead
+                of measuring the sticky card directly. */}
+            <div ref={(el) => (anchorRefs.current[i] = el)} aria-hidden="true" className="h-0 w-full" />
+            <div className="sticky will-change-transform pb-24 sm:pb-32 lg:pb-40" style={{ top: STICKY_OFFSET, zIndex: i + 1 }}>
+              <WorkCard
+                work={work}
+                getAnchorTop={() => anchorRefs.current[i].getBoundingClientRect().top + window.scrollY}
+              />
+            </div>
           </div>
         ))}
       </div>
