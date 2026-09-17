@@ -135,8 +135,8 @@ export const footer = {
   copyright: "ⓒ2026 고윤재. All rights reserved.",
   email: "goyunjae6@gmail.com",
   menu: [
-    { label: "LinkedIn", url: "#" },
-    { label: "Instagram", url: "#" },
-    { label: "GitHub", url: "#" },
+    { label: "KakaoTalk", url: "https://open.kakao.com/o/sgUIw0Ni" },
+    { label: "Instagram", url: "https://www.instagram.com/rhdbswohyxn_/" },
+    { label: "GitHub", url: "https://github.com/goyunjae6-ops" },
   ],
 };

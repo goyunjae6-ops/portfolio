@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { footer, navLinks } from "../../data/content";
 import Button from "../common/Button";
+import ContactModal from "../common/ContactModal";
 
 function MailIcon(props) {
   return (
@@ -19,12 +21,10 @@ function GithubIcon(props) {
   );
 }
 
-function LinkedinIcon(props) {
+function KakaoTalkIcon(props) {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <rect x="1.5" y="1.5" width="15" height="15" rx="2" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M5.25 8.25v5.25M5.25 5.7v.05M8.5 13.5v-3c0-1.1.7-2 1.9-2 1.15 0 1.85.9 1.85 2v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8.5 9v4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M9 2.25c-4.142 0-7.5 2.646-7.5 5.91 0 2.09 1.377 3.928 3.45 4.98-.152.55-.55 1.99-.63 2.3-.1.383.14.378.296.275.122-.08 1.94-1.316 2.727-1.852.535.078 1.088.12 1.657.12 4.142 0 7.5-2.646 7.5-5.91S13.142 2.25 9 2.25Z" fill="currentColor" />
     </svg>
   );
 }
@@ -49,11 +49,13 @@ function ArrowUpIcon(props) {
 
 const socialIcons = {
   GitHub: GithubIcon,
-  LinkedIn: LinkedinIcon,
+  KakaoTalk: KakaoTalkIcon,
   Instagram: InstagramIcon,
 };
 
 export default function Footer() {
+  const [contactOpen, setContactOpen] = useState(false);
+
   return (
     <footer id="contact" className="scroll-mt-24 rounded-t-[60px] bg-white px-6 pt-16 sm:px-10 md:px-[30px]">
       <div className="mx-auto max-w-[1860px]">
@@ -61,7 +63,7 @@ export default function Footer() {
         <div className="flex flex-col gap-8 border-b border-divider pb-14 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-base font-bold tracking-[2px] text-gold">GET IN TOUCH</p>
-            <a href={`mailto:${footer.email}`} className="cursor-accent inline-block pt-3 text-ink visited:text-ink transition-colors hover:text-gold">
+            <a href={`mailto:${footer.email}`} className="no-cursor-dot btn-press inline-block pt-3 text-ink visited:text-ink transition-colors hover:text-gold">
               <p className="font-normal leading-[0.95] text-[64px] sm:text-[90px] md:text-[102px]">Let&rsquo;s</p>
               <p className="font-normal leading-[0.95] text-[64px] sm:text-[90px] md:text-[102px]">Connect</p>
             </a>
@@ -71,7 +73,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center gap-4">
-            <Button as="a" href={`mailto:${footer.email}`} variant="dark" size="lg" className="btn-press">
+            <Button as="button" type="button" onClick={() => setContactOpen(true)} variant="dark" size="lg" className="btn-press">
               <MailIcon className="size-[18px]" />
               이메일 보내기
             </Button>
@@ -93,7 +95,7 @@ export default function Footer() {
             <p className="text-base font-bold tracking-[2px] text-gold">QUICK LINKS</p>
             <nav className="flex flex-col gap-2">
               {navLinks.map((link) => (
-                <a key={link.label} href={link.href} className="text-base text-ink visited:text-ink transition-colors hover:text-gold">
+                <a key={link.label} href={link.href} className="no-cursor-dot btn-press self-start text-base text-ink visited:text-ink transition-colors hover:text-gold">
                   {link.label}
                 </a>
               ))}
@@ -102,10 +104,15 @@ export default function Footer() {
 
           <div className="flex flex-col gap-3">
             <p className="text-base font-bold tracking-[2px] text-gold">CONNECT</p>
-            <a href={`mailto:${footer.email}`} className="text-base text-ink visited:text-ink transition-colors hover:text-gold">
-              {footer.email}
-            </a>
-            <div className="mt-1 flex gap-3">
+            <div className="flex flex-col gap-2">
+              <a href="tel:01053504654" className="no-cursor-dot btn-press self-start text-base text-ink visited:text-ink transition-colors hover:text-gold">
+                010-5350-4654
+              </a>
+              <a href={`mailto:${footer.email}`} className="no-cursor-dot btn-press self-start text-base text-ink visited:text-ink transition-colors hover:text-gold">
+                {footer.email}
+              </a>
+            </div>
+            <div className="mt-auto flex gap-3">
               {footer.menu.map((item) => {
                 const Icon = socialIcons[item.label];
                 return (
@@ -115,7 +122,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.label}
-                    className="flex size-10 items-center justify-center rounded-full border-2 border-ink text-ink visited:text-ink transition-colors hover:bg-ink hover:text-white"
+                    className="no-cursor-dot btn-press flex size-10 items-center justify-center rounded-full border-2 border-ink text-ink visited:text-ink transition-colors hover:bg-ink hover:text-white"
                   >
                     {Icon && <Icon />}
                   </a>
@@ -134,6 +141,8 @@ export default function Footer() {
           </a>
         </div>
       </div>
+
+      <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
     </footer>
   );
 }

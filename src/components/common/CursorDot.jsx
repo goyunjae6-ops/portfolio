@@ -6,8 +6,9 @@ import { useEffect, useRef, useState } from "react";
  * (see `.mouse-dot` in index.css) makes it render as the visual opposite of
  * whatever is underneath, so it works over any background color for free.
  *
- * Elements marked `.cursor-accent` (e.g. the Footer's "Let's Connect" link)
- * swap the dot to a solid ink fill instead of the difference-blend white.
+ * Elements marked `.cursor-accent` swap the dot to a solid ink fill instead
+ * of the difference-blend white. Elements marked `.no-cursor-dot` (e.g. the
+ * Footer's "Let's Connect" link) skip the dot entirely.
  * Elements with a `data-cursor-color="#hex"` attribute swap it to that exact
  * solid color instead, so the dot matches that element's own background
  * rather than always reading as black. The header nav pills intentionally
