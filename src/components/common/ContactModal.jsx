@@ -1,6 +1,7 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import Modal from "./Modal";
+import { footer } from "../../data/content";
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -28,6 +29,7 @@ export default function ContactModal({ open, onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (status === "sending") return;
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
       setStatus("error");
       return;
@@ -39,9 +41,14 @@ export default function ContactModal({ open, onClose }) {
         SERVICE_ID,
         TEMPLATE_ID,
         {
-          from_name: form.name,
-          reply_to: form.email,
-          message: form.message,
+          to_email: footer.email,
+          from_name: form.name.trim(),
+          name: form.name.trim(),
+          reply_to: form.email.trim(),
+          email: form.email.trim(),
+          title: `포트폴리오 문의 - ${form.name.trim()}`,
+          message: form.message.trim(),
+          time: new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" }),
         },
         { publicKey: PUBLIC_KEY }
       );

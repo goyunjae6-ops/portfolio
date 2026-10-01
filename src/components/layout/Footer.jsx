@@ -135,7 +135,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
           <p className="text-base text-ink">{footer.copyright}</p>
-          <a href="#hero" className="flex items-center gap-1.5 text-base text-ink visited:text-ink transition-colors hover:text-gold">
+          <a href="#hero" className="flex items-center gap-1.5 text-base font-medium text-black visited:text-black">
             맨 위로
             <ArrowUpIcon />
           </a>
