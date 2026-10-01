@@ -1,4 +1,5 @@
-import work1Mockup from "../assets/images/work1-mockup.png";
+import work1Mockup from "../assets/images/work1-desktop-base.png";
+import work1Screen from "../assets/images/work1-screen.png";
 import work2Mockup from "../assets/images/work2-mockup.png";
 import work3Mockup from "../assets/images/work3-mockup.png";
 
@@ -13,17 +14,24 @@ export const works = [
   {
     number: "01",
     title: "IKEA 웹사이트 리디자인",
-    period: "4주",
+    period: "2026.07.21 ~ 2026.08.13",
     contribution: "20%",
-    stack: ["Figma", "HTML5", "Tailwind CSS v4", "GSAP", "Swiper", "JavaScript"],
+    stack: [
+      "HTML", "CSS3", "JavaScript", "Tailwind CSS v4",
+      "GSAP", "Figma", "GitHub",
+    ],
     overview:
-      "ESG 경영으로 잘 알려진 이케아(IKEA) 공식 온라인몰을 모티브로, 5인 팀(Team_Synergos)이 UI/UX 구조와 장바구니·위시리스트 등 핵심 기능을 재현한 리디자인 프로젝트입니다. 벤치마킹 분석부터 페르소나 설계, 와이어프레임, 시안, 퍼블리싱까지 전 과정을 거쳐 25종의 페이지를 GitHub Pages로 배포했습니다.",
+      "이케아 웹사이트를 분석하고, 페르소나의 요구와 이용 흐름에 맞춰 화면 구성과 디자인을 개선한 리디자인 프로젝트입니다. HTML·CSS·JavaScript로 반응형 웹사이트와 주요 쇼핑 기능을 구현했습니다.",
     problem:
-      "이케아 코리아를 심층 분석하고 한샘몰·오늘의집·MUJI를 벤치마킹해 개선 포인트를 도출했습니다. 3종의 페르소나와 사용자 여정지도를 설계해 리디자인 방향을 구체화하고, 이를 바탕으로 반응형(1280/1024/640) 와이어프레임을 제작해 실제 구현의 기준을 마련했습니다.",
+      "이케아와 경쟁 서비스를 분석하고, 페르소나와 사용자 시나리오·여정지도를 바탕으로 와이어프레임을 제작했습니다. AI 생성 결과를 검토·수정하며 세일 페이지를 구현하고 상품 카드 UI와 페이지 연결을 다듬었습니다. 배송·설치·쇼핑 관련 질문에 답하는 챗봇을 구현했으며, 이미지 최적화와 HTML·JavaScript 오류 수정으로 구현을 마무리했습니다.",
+    compactDescription: true,
     mockup: work1Mockup,
+    screen: work1Screen,
     imageFit: "contain",
     siteUrl: "https://heebon00.github.io/Team_Synergos_esg/",
     githubUrl: "https://github.com/heebon00/Team_Synergos_esg",
+    docUrl: `${import.meta.env.BASE_URL}docs/ikea-project-presentation.pdf`,
+    figmaUrl: "https://www.figma.com/design/dm1eu0wQIQEyIfd0UAHVeD/?node-id=3005-17166",
   },
   {
     number: "02",
@@ -67,14 +75,14 @@ export const process = [
   {
     number: "03",
     title: "개발 & 제작",
-    summary: "코드와 AI 툴로 결과물을 직접 완성합니다",
-    detail: "React·Tailwind·GSAP로 인터랙션을 구현하고, Stable Diffusion·RunwayML로 AI 영상 제작 파이프라인을 구축합니다.",
+    summary: "코드와 AI 툴로 결과물을 직접 구현합니다",
+    detail: "React·Tailwind·GSAP로 인터랙션을 구현하고, 디자인 시안을 실제 웹 화면으로 완성합니다.",
   },
   {
     number: "04",
     title: "검증 & 배포",
     summary: "테스트와 최적화 후 결과물을 완성합니다",
-    detail: "FFmpeg 배치 처리로 렌더링 시간을 60% 단축하고, 프록시 편집 워크플로우로 협업 효율을 45% 개선한 뒤 배포까지 마무리합니다.",
+    detail: "코드 검사와 빌드로 오류를 점검하고, 화면과 주요 기능을 확인합니다. Lighthouse로 성능과 접근성을 살펴 개선한 뒤 웹사이트를 배포합니다.",
   },
 ];
 
@@ -83,10 +91,10 @@ export const skillGroups = [
     title: "Frontend Developer",
     description: "웹 UI를 구조화하고 반응형으로 구현합니다",
     items: [
-      { name: "HTML / CSS3", level: 90 },
-      { name: "JavaScript", level: 85 },
+      { name: "HTML / CSS3", level: 80 },
+      { name: "JavaScript", level: 75 },
       { name: "React", level: 80 },
-      { name: "Tailwind CSS v4", level: 85 },
+      { name: "Tailwind CSS v4", level: 70 },
     ],
   },
   {
@@ -94,8 +102,9 @@ export const skillGroups = [
     description: "구조를 설계하고 움직임을 더합니다",
     items: [
       { name: "Figma", level: 90 },
-      { name: "GSAP", level: 75 },
+      { name: "GSAP", level: 70 },
       { name: "Photoshop", level: 70 },
+      { name: "Illustrator", level: 70 },
     ],
   },
   {
@@ -103,16 +112,16 @@ export const skillGroups = [
     description: "AI 도구와 에이전트로 작업을 자동화합니다",
     items: [
       { name: "Claude", level: 90 },
-      { name: "Antigravity", level: 70 },
-      { name: "Python", level: 80 },
+      { name: "Antigravity", level: 80 },
+      { name: "Python", level: 70 },
     ],
   },
   {
     title: "Motion Editor",
     description: "촬영본을 다듬고 모션그래픽으로 완성합니다",
     items: [
-      { name: "Premiere Pro", level: 90 },
-      { name: "After Effects", level: 85 },
+      { name: "Premiere Pro", level: 80 },
+      { name: "After Effects", level: 75 },
     ],
   },
 ];

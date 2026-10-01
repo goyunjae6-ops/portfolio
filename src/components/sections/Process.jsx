@@ -90,14 +90,13 @@ export default function Process() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {process.map((step, i) => {
             const Icon = icons[i];
-            const active = fillProgress >= i / (stepCount - 1) - 0.02;
             return (
               <div
                 key={step.number}
                 className="flex flex-col gap-4 rounded-[24px] border border-divider bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-gold/60 hover:shadow-[0px_20px_36px_-12px_rgba(0,0,0,0.14)]"
               >
                 <div className="flex items-center justify-between">
-                  <span className={`text-base font-bold tracking-[2px] transition-colors duration-300 ${active ? "text-gold" : "text-muted"}`}>
+                  <span className="text-base font-bold tracking-[2px] text-gold">
                     {step.number}
                   </span>
                   <Icon className="text-ink" />

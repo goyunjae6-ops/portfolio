@@ -63,10 +63,10 @@ export default function Footer() {
         <div className="flex flex-col gap-8 border-b border-divider pb-14 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-base font-bold tracking-[2px] text-gold">GET IN TOUCH</p>
-            <a href={`mailto:${footer.email}`} className="no-cursor-dot btn-press inline-block pt-3 text-ink visited:text-ink transition-colors hover:text-gold">
+            <button type="button" onClick={() => setContactOpen(true)} className="no-cursor-dot btn-press inline-block cursor-pointer pt-3 text-left text-ink transition-colors hover:text-gold">
               <p className="font-normal leading-[0.95] text-[64px] sm:text-[90px] md:text-[102px]">Let&rsquo;s</p>
               <p className="font-normal leading-[0.95] text-[64px] sm:text-[90px] md:text-[102px]">Connect</p>
-            </a>
+            </button>
             <p className="mt-4 max-w-[420px] text-base text-muted">
               새로운 프로젝트나 협업 제안이 있다면 언제든 편하게 연락 주세요.
             </p>

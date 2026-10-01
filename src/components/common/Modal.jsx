@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 
-export default function Modal({ open, onClose, children }) {
+export default function Modal({ open, onClose, children, className = "", ariaLabel }) {
   useEffect(() => {
     if (!open) return;
 
@@ -18,13 +19,14 @@ export default function Modal({ open, onClose, children }) {
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-ink/60 p-4 sm:p-8" onClick={onClose}>
       <div
-        className="relative max-h-[85vh] w-full max-w-[720px] overflow-y-auto rounded-[32px] bg-white p-8 sm:p-10"
+        className={`relative max-h-[85vh] w-full ${className || "max-w-[720px]"} overflow-y-auto rounded-[32px] bg-white p-8 sm:p-10`}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
+        aria-label={ariaLabel}
       >
         <button
           type="button"
@@ -36,6 +38,7 @@ export default function Modal({ open, onClose, children }) {
         </button>
         {children}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

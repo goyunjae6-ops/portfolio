@@ -20,6 +20,7 @@ export default function WorkCard({ work, getAnchorTop }) {
   const imgRef = useRef(null);
   const numberRef = useRef(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
+  const [documentsOpen, setDocumentsOpen] = useState(false);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -75,6 +76,7 @@ export default function WorkCard({ work, getAnchorTop }) {
         target={work.siteUrl ? "_blank" : undefined}
         rel={work.siteUrl ? "noopener noreferrer" : undefined}
         variant="dark"
+        className="btn-press"
         icon={arrowUpRight}
         iconAlt=""
       >
@@ -86,17 +88,18 @@ export default function WorkCard({ work, getAnchorTop }) {
         target={work.githubUrl ? "_blank" : undefined}
         rel={work.githubUrl ? "noopener noreferrer" : undefined}
         variant="outline"
+        className="btn-press"
         icon={githubIcon}
         iconAlt=""
       >
         깃허브
       </Button>
       <Button
-        as="a"
-        href={work.docUrl || "#"}
-        target={work.docUrl ? "_blank" : undefined}
-        rel={work.docUrl ? "noopener noreferrer" : undefined}
+        as="button"
+        type="button"
+        onClick={() => setDocumentsOpen(true)}
         variant="outline"
+        className="btn-press"
         icon={fileTextIcon}
         iconAlt=""
       >
@@ -113,6 +116,18 @@ export default function WorkCard({ work, getAnchorTop }) {
 
       <div className="flex flex-1 flex-col">
         <div className="overflow-hidden rounded-3xl border border-mist shadow-[0px_24px_48px_-8px_rgba(0,0,0,0.09)] lg:h-full">
+          {work.screen ? (
+            <svg
+              ref={imgRef}
+              viewBox="0 0 2206 1900"
+              role="img"
+              aria-label={`${work.title} 목업`}
+              className="aspect-[880/758] w-full bg-mist lg:aspect-auto lg:h-full"
+            >
+              <image href={work.mockup} width="2206" height="1900" />
+              <image href={work.screen} x="178" y="181" width="1850" height="1062" preserveAspectRatio="none" />
+            </svg>
+          ) : (
           <img
             ref={imgRef}
             src={work.mockup}
@@ -121,6 +136,7 @@ export default function WorkCard({ work, getAnchorTop }) {
             decoding="async"
             className={`aspect-[880/758] w-full bg-mist lg:aspect-auto lg:h-full ${work.imageFit === "contain" ? "object-contain" : "object-cover"}`}
           />
+          )}
         </div>
       </div>
 
@@ -149,27 +165,53 @@ export default function WorkCard({ work, getAnchorTop }) {
 
           <div className="flex flex-col gap-2">
             <p className="text-base font-bold uppercase tracking-[2px] text-gold">개요</p>
-            <p className="line-clamp-3 text-base leading-[1.7] text-body-grey">{work.overview}</p>
+            <p className={`${work.compactDescription ? "text-ink" : "line-clamp-3 text-body-grey"} text-base leading-[1.7]`}>{work.overview}</p>
           </div>
 
           <div className="flex flex-col gap-2">
-            <p className="text-base font-bold uppercase tracking-[2px] text-gold">문제해결</p>
-            <p className="line-clamp-3 text-base leading-[1.7] text-body-grey">{work.problem}</p>
+            <p className="text-base font-bold uppercase tracking-[2px] text-gold">{work.compactDescription ? "작업 내용" : "문제해결"}</p>
+            <p className={`${work.compactDescription ? "text-ink" : "line-clamp-3 text-body-grey"} text-base leading-[1.7]`}>{work.problem}</p>
           </div>
 
-          <button
+          {!work.compactDescription && <button
             type="button"
             onClick={() => setDetailsOpen(true)}
             className="self-start text-base font-bold text-gold underline decoration-gold/40 underline-offset-4 transition-colors hover:text-ink"
           >
             더보기
-          </button>
+          </button>}
         </div>
 
         {linkButtons}
       </div>
 
-      <Modal open={detailsOpen} onClose={() => setDetailsOpen(false)}>
+      <Modal open={documentsOpen} onClose={() => setDocumentsOpen(false)} className="max-w-[480px]" ariaLabel="프로젝트 자료">
+        <p className="text-base font-bold tracking-[2px] text-gold">PROJECT DOCUMENTS</p>
+        <h3 className="mt-2 pr-8 text-2xl font-bold text-ink">프로젝트 자료</h3>
+        <div className="mt-7 flex flex-col gap-3">
+          {[
+            { label: "Figma", description: "디자인 시안", url: work.figmaUrl },
+            { label: "PPT", description: "프로젝트 발표 자료", url: work.docUrl },
+          ].map(({ label, description, url }) => (
+            <Button
+              key={label}
+              as={url ? "a" : "button"}
+              href={url || undefined}
+              type={url ? undefined : "button"}
+              target={url ? "_blank" : undefined}
+              rel={url ? "noopener noreferrer" : undefined}
+              disabled={!url}
+              variant="outline"
+              className="btn-press h-auto min-h-[64px] w-full justify-between gap-4 py-3 text-left disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <span>{label}</span>
+              <span className="text-sm font-normal">{description}</span>
+            </Button>
+          ))}
+        </div>
+      </Modal>
+
+      {!work.compactDescription && <Modal open={detailsOpen} onClose={() => setDetailsOpen(false)}>
         <h3 className="pr-10 text-2xl font-bold leading-[1.2] text-ink sm:text-[32px]">{work.title}</h3>
 
         <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-divider bg-mist/40 px-6 py-5 text-base">
@@ -202,7 +244,7 @@ export default function WorkCard({ work, getAnchorTop }) {
         </div>
 
         <div className="mt-8">{linkButtons}</div>
-      </Modal>
+      </Modal>}
     </div>
   );
 }
