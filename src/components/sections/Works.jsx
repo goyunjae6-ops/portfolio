@@ -47,6 +47,18 @@ export default function Works() {
   const skillsBadgeRef = useRef(null);
   const skillsGridRef = useRef(null);
   const anchorRefs = useRef([]);
+  const cardsRef = useRef(null);
+
+  useEffect(() => {
+    const container = cardsRef.current;
+    const firstCard = container.querySelector(".sticky > div");
+    const observer = new ResizeObserver(() => {
+      container.style.setProperty("--first-work-card-height", `${firstCard.getBoundingClientRect().height}px`);
+      ScrollTrigger.refresh();
+    });
+    observer.observe(firstCard);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -123,7 +135,7 @@ export default function Works() {
         </span>
       </div>
 
-      <div className="mx-auto flex max-w-[1350px] flex-col px-2 sm:px-6 lg:px-0">
+      <div ref={cardsRef} className="mx-auto flex max-w-[1350px] flex-col px-2 sm:px-6 lg:px-0">
         {works.map((work, i) => (
           <div key={work.number} className="contents">
             {/* Non-sticky marker sibling: `position: sticky` elements report

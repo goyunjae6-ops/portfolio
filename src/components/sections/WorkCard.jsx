@@ -21,6 +21,7 @@ export default function WorkCard({ work, getAnchorTop }) {
   const numberRef = useRef(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [documentsOpen, setDocumentsOpen] = useState(false);
+  const primaryUrl = work.videoProject ? work.videoUrl : work.siteUrl;
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -71,18 +72,21 @@ export default function WorkCard({ work, getAnchorTop }) {
   const linkButtons = (
     <div className="flex flex-wrap items-center gap-3.5">
       <Button
-        as="a"
-        href={work.siteUrl || "#"}
-        target={work.siteUrl ? "_blank" : undefined}
-        rel={work.siteUrl ? "noopener noreferrer" : undefined}
+        as={work.videoProject && !primaryUrl ? "button" : "a"}
+        href={work.videoProject ? primaryUrl : primaryUrl || "#"}
+        type={work.videoProject && !primaryUrl ? "button" : undefined}
+        disabled={work.videoProject && !primaryUrl}
+        title={work.videoProject && !primaryUrl ? "영상 링크 준비 중" : undefined}
+        target={primaryUrl ? "_blank" : undefined}
+        rel={primaryUrl ? "noopener noreferrer" : undefined}
         variant="dark"
-        className="btn-press"
+        className="btn-press disabled:cursor-not-allowed"
         icon={arrowUpRight}
         iconAlt=""
       >
-        사이트
+        {work.videoProject ? "영상 보기" : "사이트"}
       </Button>
-      <Button
+      {!work.videoProject && <Button
         as="a"
         href={work.githubUrl || "#"}
         target={work.githubUrl ? "_blank" : undefined}
@@ -93,11 +97,14 @@ export default function WorkCard({ work, getAnchorTop }) {
         iconAlt=""
       >
         깃허브
-      </Button>
+      </Button>}
       <Button
-        as="button"
-        type="button"
-        onClick={() => setDocumentsOpen(true)}
+        as={work.videoProject ? "a" : "button"}
+        href={work.videoProject ? work.docUrl : undefined}
+        target={work.videoProject ? "_blank" : undefined}
+        rel={work.videoProject ? "noopener noreferrer" : undefined}
+        type={work.videoProject ? undefined : "button"}
+        onClick={work.videoProject ? undefined : () => setDocumentsOpen(true)}
         variant="outline"
         className="btn-press"
         icon={fileTextIcon}
@@ -109,23 +116,24 @@ export default function WorkCard({ work, getAnchorTop }) {
   );
 
   return (
-    <div ref={cardRef} className="relative flex flex-col gap-10 rounded-[60px] bg-gradient-to-r from-card-from via-card-via via-40% to-white p-8 sm:p-12 lg:flex-row lg:gap-12 lg:p-14">
+    <div ref={cardRef} className={`relative flex flex-col gap-10 rounded-[60px] bg-gradient-to-r from-card-from via-card-via via-40% to-white p-8 sm:p-12 lg:flex-row lg:gap-12 lg:p-14 ${work.number === "02" ? "lg:min-h-[var(--first-work-card-height)]" : ""}`}>
       <p ref={numberRef} className="absolute -top-8 left-10 z-20 text-[64px] font-bold leading-none tracking-[-4px] text-gold/50 will-change-[opacity] sm:-top-12 sm:left-14 sm:text-[96px]">
         {work.number}
       </p>
 
       <div className="flex flex-1 flex-col">
-        <div className="overflow-hidden rounded-3xl border border-mist shadow-[0px_24px_48px_-8px_rgba(0,0,0,0.09)] lg:h-full">
-          {work.screen ? (
+        <div className={`overflow-hidden rounded-3xl shadow-[0px_24px_48px_-8px_rgba(0,0,0,0.09)] lg:h-full ${work.number === "02" ? "" : "border border-mist"}`}>
+          {work.screen || work.mockupCanvas ? (
             <svg
               ref={imgRef}
               viewBox="0 0 2206 1900"
+              preserveAspectRatio={work.mockupCanvas ? "xMidYMid slice" : "xMidYMid meet"}
               role="img"
               aria-label={`${work.title} 목업`}
               className="aspect-[880/758] w-full bg-mist lg:aspect-auto lg:h-full"
             >
-              <image href={work.mockup} width="2206" height="1900" />
-              <image href={work.screen} x="178" y="181" width="1850" height="1062" preserveAspectRatio="none" />
+              <image href={work.mockup} width="2206" height="1900" preserveAspectRatio={work.mockupCanvas ? "xMidYMid slice" : "xMidYMid meet"} />
+              {work.screen && <image href={work.screen} x="178" y="181" width="1850" height="1062" preserveAspectRatio="none" />}
             </svg>
           ) : (
           <img

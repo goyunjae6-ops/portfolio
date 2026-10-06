@@ -1,6 +1,6 @@
 import work1Mockup from "../assets/images/work1-desktop-base.png";
 import work1Screen from "../assets/images/work1-screen.png";
-import work2Mockup from "../assets/images/work2-mockup.png";
+import work2Mockup from "../assets/images/work2-tablet-mockup.png";
 import work3Mockup from "../assets/images/work3-mockup.png";
 
 export const navLinks = [
@@ -35,15 +35,20 @@ export const works = [
   },
   {
     number: "02",
-    title: "AI 영상 제작 프로젝트",
-    period: "2주",
-    contribution: "65%",
-    stack: ["Python", "Premiere Pro", "After Effects", "Stable Diffusion", "RunwayML", "FFmpeg"],
+    title: "더 단백 AI 광고 영상",
+    period: "2026.06.18 ~ 2026.07.01",
+    contribution: "100%",
+    stack: ["Premiere Pro", "Google Flow", "Gemini", "Claude", "Figma", "Suno"],
     overview:
-      "AI 기반 영상 자동 생성 및 편집 파이프라인을 구축한 프로젝트입니다. Stable Diffusion으로 이미지를 생성하고, RunwayML로 영상 변환 후 자동 편집하여 콘텐츠 제작 시간을 80% 단축했습니다.",
+      "셀렉스 AI 광고 영상을 참고해 브랜드를 빙그레 ‘더 단백’으로 바꿔 제작한 개인 프로젝트입니다. 20~30대를 타깃으로 아침 일상과 제품 캐릭터를 연결하고, ‘이 맛에 더:한다’라는 슬로건을 담은 약 53초의 AI 광고 영상을 완성했습니다.",
     problem:
-      "기존 영상 제작 과정에서 소스 이미지 확보와 반복적인 편집 작업에 많은 시간이 소요되는 문제를 해결했습니다. AI 이미지 생성과 자동 컷 편집을 도입하고, FFmpeg 기반 배치 처리로 렌더링 속도를 60% 개선했습니다.",
+      "브랜드와 타깃을 분석해 기획서와 영상 콘셉트를 정리하고, AI로 제품 캐릭터와 일상 장면을 제작했습니다. 캐릭터 외형·인물 의상·화질을 다듬고, Premiere Pro에서 장면별 컷 편집과 내레이션·음악 구성을 진행했습니다. 영상·오디오 전환 효과를 적용해 기획부터 최종 편집까지 혼자 완성했습니다.",
+    compactDescription: true,
     mockup: work2Mockup,
+    mockupCanvas: true,
+    videoProject: true,
+    videoUrl: "https://drive.google.com/file/d/1RAC41HwwK470H59ofj2GYQCL0qVja1xm/view?usp=sharing",
+    docUrl: `${import.meta.env.BASE_URL}docs/danbaek-project-plan.pdf`,
   },
   {
     number: "03",
