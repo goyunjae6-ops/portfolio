@@ -62,6 +62,17 @@ export const works = [
       "팀원 간 영상 소스 공유와 버전 관리가 혼란스러운 문제를 해결하기 위해 클라우드 기반 협업 시스템을 구축했습니다. 프록시 편집 워크플로우를 도입하여 저사양 환경에서도 원활한 편집이 가능하게 했고, 최종 렌더링 시간을 45% 단축했습니다.",
     mockup: work3Mockup,
   },
+  {
+    number: "04",
+    title: "새 프로젝트 준비 중",
+    period: "추가 예정",
+    contribution: "추가 예정",
+    stack: ["추가 예정"],
+    overview: "프로젝트 소개를 추가할 예정입니다.",
+    problem: "프로젝트의 주요 작업 내용을 추가할 예정입니다.",
+    compactDescription: true,
+    placeholder: true,
+  },
 ];
 
 export const process = [

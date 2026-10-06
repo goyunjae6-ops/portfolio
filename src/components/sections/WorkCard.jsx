@@ -72,10 +72,10 @@ export default function WorkCard({ work, getAnchorTop }) {
   const linkButtons = (
     <div className="flex flex-wrap items-center gap-3.5">
       <Button
-        as={work.videoProject && !primaryUrl ? "button" : "a"}
-        href={work.videoProject ? primaryUrl : primaryUrl || "#"}
+        as={work.placeholder || (work.videoProject && !primaryUrl) ? "button" : "a"}
+        href={work.placeholder ? undefined : work.videoProject ? primaryUrl : primaryUrl || "#"}
         type={work.videoProject && !primaryUrl ? "button" : undefined}
-        disabled={work.videoProject && !primaryUrl}
+        disabled={work.placeholder || (work.videoProject && !primaryUrl)}
         title={work.videoProject && !primaryUrl ? "영상 링크 준비 중" : undefined}
         target={primaryUrl ? "_blank" : undefined}
         rel={primaryUrl ? "noopener noreferrer" : undefined}
@@ -87,8 +87,9 @@ export default function WorkCard({ work, getAnchorTop }) {
         {work.videoProject ? "영상 보기" : "사이트"}
       </Button>
       {!work.videoProject && <Button
-        as="a"
-        href={work.githubUrl || "#"}
+        as={work.placeholder ? "button" : "a"}
+        href={work.placeholder ? undefined : work.githubUrl || "#"}
+        disabled={work.placeholder}
         target={work.githubUrl ? "_blank" : undefined}
         rel={work.githubUrl ? "noopener noreferrer" : undefined}
         variant="outline"
@@ -105,6 +106,7 @@ export default function WorkCard({ work, getAnchorTop }) {
         rel={work.videoProject ? "noopener noreferrer" : undefined}
         type={work.videoProject ? undefined : "button"}
         onClick={work.videoProject ? undefined : () => setDocumentsOpen(true)}
+        disabled={work.placeholder}
         variant="outline"
         className="btn-press"
         icon={fileTextIcon}
@@ -116,14 +118,19 @@ export default function WorkCard({ work, getAnchorTop }) {
   );
 
   return (
-    <div ref={cardRef} className={`relative flex flex-col gap-10 rounded-[60px] bg-gradient-to-r from-card-from via-card-via via-40% to-white p-8 sm:p-12 lg:flex-row lg:gap-12 lg:p-14 ${work.number === "02" ? "lg:min-h-[var(--first-work-card-height)]" : ""}`}>
+    <div ref={cardRef} className={`relative flex flex-col gap-10 rounded-[60px] bg-gradient-to-r from-card-from via-card-via via-40% to-white p-8 sm:p-12 lg:flex-row lg:gap-12 lg:p-14 ${work.number === "02" || work.placeholder ? "lg:min-h-[var(--first-work-card-height)]" : ""}`}>
       <p ref={numberRef} className="absolute -top-8 left-10 z-20 text-[64px] font-bold leading-none tracking-[-4px] text-gold/50 will-change-[opacity] sm:-top-12 sm:left-14 sm:text-[96px]">
         {work.number}
       </p>
 
       <div className="flex flex-1 flex-col">
         <div className={`overflow-hidden rounded-3xl shadow-[0px_24px_48px_-8px_rgba(0,0,0,0.09)] lg:h-full ${work.number === "02" ? "" : "border border-mist"}`}>
-          {work.screen || work.mockupCanvas ? (
+          {work.placeholder ? (
+            <div ref={imgRef} className="flex aspect-[880/758] w-full flex-col items-center justify-center gap-3 bg-mist text-label lg:aspect-auto lg:h-full">
+              <span className="text-2xl font-bold tracking-[2px]">COMING SOON</span>
+              <span className="text-base">프로젝트 이미지 추가 예정</span>
+            </div>
+          ) : work.screen || work.mockupCanvas ? (
             <svg
               ref={imgRef}
               viewBox="0 0 2206 1900"
