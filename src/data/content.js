@@ -75,7 +75,7 @@ export const works = [
     compactDescription: true,
     imagePending: true,
     githubUrl: "https://github.com/goyunjae6-ops/chatbot-db",
-    siteUrl: "https://two026-chatbot-frontend.onrender.com",
+    siteUrl: "https://chatbot-db-front-x8gl.onrender.com",
     documentsPending: true,
   },
 ];
