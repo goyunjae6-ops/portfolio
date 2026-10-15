@@ -64,14 +64,19 @@ export const works = [
   },
   {
     number: "04",
-    title: "새 프로젝트 준비 중",
-    period: "추가 예정",
-    contribution: "추가 예정",
-    stack: ["추가 예정"],
-    overview: "프로젝트 소개를 추가할 예정입니다.",
-    problem: "프로젝트의 주요 작업 내용을 추가할 예정입니다.",
+    title: "Python AI 챗봇",
+    period: "확인 예정",
+    contribution: "확인 예정",
+    stack: ["Python", "FastAPI", "React", "Vite", "CSS3", "SQLite", "Hugging Face", "GitHub"],
+    overview:
+      "Python·FastAPI 백엔드와 React 화면을 연결하고, Hugging Face의 Qwen 모델을 연동한 AI 챗봇 웹 애플리케이션입니다. 대화 기록을 SQLite에 저장하고 이전 메시지를 함께 전달해, 대화의 맥락을 이어갈 수 있도록 구현했습니다.",
+    problem:
+      "채팅 화면과 API를 연결하고, 새 대화 생성·기록 조회·제목 수정·삭제 기능을 구현했습니다. AI 요청 형식과 대화 기록 전달 과정의 오류를 수정했으며, 서버 응답 지연 안내와 요청 시간 제한·재시도를 적용했습니다. 메시지 전송이 끊겼을 때는 저장 여부를 확인해 중복 전송을 줄이도록 처리했습니다.",
     compactDescription: true,
-    placeholder: true,
+    imagePending: true,
+    githubUrl: "https://github.com/goyunjae6-ops/chatbot-db",
+    siteUrl: "https://two026-chatbot-frontend.onrender.com",
+    documentsPending: true,
   },
 ];
 
