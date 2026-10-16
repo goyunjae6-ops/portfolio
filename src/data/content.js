@@ -103,7 +103,7 @@ export const works = [
     siteUrl: "https://chatbot-db-front-x8gl.onrender.com",
     docLabel: "기획서",
     directDocument: true,
-    docUrl: "https://github.com/goyunjae6-ops/chatbot-db/blob/main/docs/yoonjaept-project-introduction.pdf",
+    docUrl: "https://goyunjae6-ops.github.io/chatbot-db/yoonjaept-project-introduction.pdf#view=Fit",
   },
 ];
 
