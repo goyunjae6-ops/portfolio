@@ -76,7 +76,7 @@ export const works = [
     primaryLabel: "영상 보기",
     docUrl: "https://app.notion.com/p/volume1/3db725808c2680a8af06dd9f3a837d66",
     documentOptions: [
-      { label: "팀 영상 PPT", description: "", url: null },
+      { label: "팀 영상 PPT", description: "", url: `${import.meta.env.BASE_URL}docs/CU_1016_2.deck` },
       { label: "개인 영상 PPT", description: "", url: null },
     ],
     docLabel: "기획서",
@@ -182,7 +182,7 @@ export const about = {
   certificate: "1종보통 운전면허 (2023)",
   education: [
     "삼성고등학교 (2023)",
-    "MBC 아카데미 · 생성형 AI를 활용한 반응형 웹콘텐츠 개발기획자 양성과정 (26.04 - 26.10 수료예정)",
+    "MBC 아카데미 · 생성형 AI를 활용한 반응형 웹콘텐츠 개발기획자 양성과정 (26.04 - 26.10)",
   ],
 };
 
