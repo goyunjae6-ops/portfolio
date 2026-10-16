@@ -1,7 +1,8 @@
 import work1Mockup from "../assets/images/work1-desktop-base.png";
 import work1Screen from "../assets/images/work1-screen.png";
 import work2Mockup from "../assets/images/work2-tablet-mockup.png";
-import work3Mockup from "../assets/images/work3-mockup.png";
+import work3Mockup from "../assets/images/work3-cu-desktop-balanced.png";
+import work4Mockup from "../assets/images/work4-chatbot-phone-mockup.png";
 
 export const navLinks = [
   { label: "Home", href: "#hero" },
@@ -52,31 +53,57 @@ export const works = [
   },
   {
     number: "03",
-    title: "영상 제작 팀 프로젝트",
-    period: "4주",
-    contribution: "50%",
-    stack: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Blender", "Cinema 4D"],
+    title: "CU 옴니버스 AI 광고",
+    period: "2026.09.15 ~ 2026.10.08",
+    contributionLabel: "기여도",
+    contribution: "25%",
+    stack: ["Higgsfield", "GPT", "Claude", "Premiere Pro", "After Effects", "Photoshop"],
     overview:
-      "대학 영상 동아리에서 진행한 팀 프로젝트로, 브랜드 홍보 영상을 기획부터 후반 작업까지 전 과정을 담당했습니다. 모션 그래픽과 컬러 그레이딩을 활용하여 시각적 완성도를 높이고, 팀 협업 워크플로우를 체계화했습니다.",
+      "CU 편의점의 일상을 네 가지 이야기로 풀어낸 옴니버스 형식의 AI 광고 팀 프로젝트입니다. 30초 분량의 광고를 목표로 각 에피소드와 스토리보드를 기획했습니다. 제가 담당한 택배 로맨스 편에서는 알바생과 손님의 풋풋한 만남을 ‘Lovely to CU’라는 브랜드 메시지로 연결했습니다.",
     problem:
-      "팀원 간 영상 소스 공유와 버전 관리가 혼란스러운 문제를 해결하기 위해 클라우드 기반 협업 시스템을 구축했습니다. 프록시 편집 워크플로우를 도입하여 저사양 환경에서도 원활한 편집이 가능하게 했고, 최종 렌더링 시간을 45% 단축했습니다.",
+      "Higgsfield를 MCP로 GPT·Claude에 연결해 AI를 활용한 영상 제작을 진행했습니다. 공통 가이드와 컷별 프롬프트를 구성해 인물·매장·브랜드의 일관성을 유지했습니다. 택배 로맨스 편에서는 대사와 반응에 맞춰 컷을 편집하고, 강조 자막·하트·홍조 효과와 엔딩 로고 애니메이션을 더해 감정의 흐름을 표현했습니다.",
+    compactDescription: true,
+    workLabel: "제작 내용",
     mockup: work3Mockup,
+    imageAlt: "CU 광고와 재생 바가 표시된 정면 모니터, 키보드와 마우스 목업",
+    mockupCanvas: true,
+    videoProject: true,
+    videoUrl: "https://drive.google.com/file/d/1UVYCwiNafOE4tvkC7G-0Dh85GpZpUiTr/view?usp=sharing",
+    videoOptions: [
+      { label: "CU 옴니버스 팀 광고", description: "", url: "https://drive.google.com/file/d/1lvGoly6YWoaf-VrNr10QqYISNBtZBUep/view?usp=sharing" },
+      { label: "개인 CU 광고", description: "택배 로맨스 편", url: "https://drive.google.com/file/d/1UVYCwiNafOE4tvkC7G-0Dh85GpZpUiTr/view?usp=sharing" },
+    ],
+    primaryLabel: "영상 보기",
+    docUrl: "https://app.notion.com/p/volume1/3db725808c2680a8af06dd9f3a837d66",
+    documentOptions: [
+      { label: "팀 영상 PPT", description: "", url: null },
+      { label: "개인 영상 PPT", description: "", url: null },
+    ],
+    docLabel: "기획서",
   },
   {
     number: "04",
-    title: "Python AI 챗봇",
-    period: "확인 예정",
-    contribution: "확인 예정",
-    stack: ["Python", "FastAPI", "React", "Vite", "CSS3", "SQLite", "Hugging Face", "GitHub"],
+    title: "윤재피티 AI Chatbot",
+    matchCardHeight: true,
+    period: "2026.09.01 ~ 2026.09.14",
+    contribution: "100%",
+    stack: ["Python", "FastAPI", "React", "JavaScript", "CSS3", "Claude", "Render", "GitHub"],
     overview:
-      "Python·FastAPI 백엔드와 React 화면을 연결하고, Hugging Face의 Qwen 모델을 연동한 AI 챗봇 웹 애플리케이션입니다. 대화 기록을 SQLite에 저장하고 이전 메시지를 함께 전달해, 대화의 맥락을 이어갈 수 있도록 구현했습니다.",
+      "Python·FastAPI와 React로 제작한 한국어 챗봇 웹 애플리케이션입니다. 대화 기록을 SQLite에 저장하고, 대화 검색·관리와 계산·날짜·텍스트 도구를 구현했습니다. 기본 모드는 외부 AI API 없이 규칙과 계산 코드로 답변하며, 설정에 따라 Hugging Face 모델을 연결할 수 있도록 구성했습니다.",
     problem:
-      "채팅 화면과 API를 연결하고, 새 대화 생성·기록 조회·제목 수정·삭제 기능을 구현했습니다. AI 요청 형식과 대화 기록 전달 과정의 오류를 수정했으며, 서버 응답 지연 안내와 요청 시간 제한·재시도를 적용했습니다. 메시지 전송이 끊겼을 때는 저장 여부를 확인해 중복 전송을 줄이도록 처리했습니다.",
+      "Claude를 활용해 채팅 화면과 API를 개발하고, 대화 검색·제목 변경·삭제, 답변 복사·텍스트 내보내기와 모바일 반응형 화면을 구현했습니다. 응답 대기 표시와 오류 안내, 실패한 요청의 재시도를 적용하고, 요청 ID로 대화의 중복 저장을 방지했습니다. Render 배포 과정에서 API 주소와 CORS 설정을 조정해 프론트엔드와 백엔드를 연결했습니다.",
     compactDescription: true,
-    imagePending: true,
+    mockup: work4Mockup,
+    mockupCanvas: true,
+    imageFit: "contain",
+    imageScale: 1,
+    imageAlt: "윤재피티 챗봇의 모바일 화면을 담은 휴대폰 목업",
+    workLabel: "제작 내용",
     githubUrl: "https://github.com/goyunjae6-ops/chatbot-db",
     siteUrl: "https://chatbot-db-front-x8gl.onrender.com",
-    documentsPending: true,
+    docLabel: "기획서",
+    directDocument: true,
+    docUrl: `${import.meta.env.BASE_URL}docs/yoonjaept-project-introduction.pdf?v=20261016-1727#view=Fit`,
   },
 ];
 
